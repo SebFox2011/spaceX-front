@@ -1,5 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import purple from '@material-ui/core/colors/purple';
 
 export default function Dragons () {
     const { isLoading, error, data, isFetching } = useQuery("repoDragons", () =>
@@ -7,7 +9,7 @@ export default function Dragons () {
         "https://api.spacexdata.com/v3/dragons"
       ).then((res) => res.json())
     );
-    if (isLoading) return "Loading...";
+    if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
     if (error) return "An error has occurred: " + error.message;
   
     return (

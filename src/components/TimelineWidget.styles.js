@@ -526,7 +526,7 @@ const styles = theme => ({
       content: '""',
       position: 'absolute',
       height: '100%',
-      left: -2,
+      left: 34,
       borderLeft: `2px solid ${theme.palette.primary.main}`,
       [theme.breakpoints.up('sm')]: {
         left: 108,

@@ -1,5 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import purple from '@material-ui/core/colors/purple';
 
 const Missions = () => {
     const { isLoading, error, data, isFetching } = useQuery("repoMissions", () =>
@@ -12,7 +14,7 @@ const Missions = () => {
   
     return (
       <div>
-        <div>{isFetching ? "Updating..." : "Missions: "}</div>
+        <div>{isFetching ? <CircularProgress  style={{ color: purple[500] }} thickness={7} /> : "Missions: "}</div>
         <span>{JSON.stringify(data)}</span>
       </div>
     );

@@ -5,22 +5,20 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
+import Icon from '@material-ui/core/Icon'
 import styles from './PaperBlock.styles';
-import { lightBlue } from '@material-ui/core/colors';
 
-function PapperBlock(props) {
-  const {
-    classes,
-    title,
-    desc,
-    children,
-    whiteBg,
-    noMargin,
-    colorMode,
-    overflowX,
-    icon
-  } = props;
+function PapperBlock({
+  classes,
+  title,
+  desc,
+  children,
+  whiteBg,
+  noMargin,
+  colorMode,
+  overflowX,
+  icon
+}) {
 
   const color = mode => {
     switch (mode) {
@@ -34,7 +32,7 @@ function PapperBlock(props) {
   };
   return (
     <div>
-      <Paper className={classes.root} style={{backgroundColor:'lightBlue'}}
+      <Paper className={classes.root} style={{backgroundColor:'rgba(101,115,195,0.08)'}}
         elevation={1}
       >
         <div className={classes.descBlock}>

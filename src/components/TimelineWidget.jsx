@@ -7,55 +7,34 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import PapperBlock from './PaperBlock';
 import styles from './TimelineWidget.styles';
-
-const dataTimeline = [
-  {
-    time: '11:20',
-    title: 'Updated Product',
-    desc: 'Quisque a consequat ante, at volutpat enim.'
-  },
-  {
-    time: 'Yesteray',
-    title: 'You liked James products',
-    desc: 'Aenean sit amet magna vel magna fringilla fermentum.'
-  },
-  {
-    time: 'Yesterday',
-    title: 'James just like your product',
-    desc: 'Nam posuere accumsan porta.'
-  },
-  {
-    time: '11 Oct 2018',
-    title: 'Jenna commented on your product',
-    desc: 'Curabitur egestas consequat lorem.'
-  },
-  {
-    time: 'Last week',
-    title: 'Jihan Doe just like your product',
-    desc: 'Vestibulum nec mi suscipit, dapibus purus a'
-  },
-  {
-    time: 'Last week',
-    title: 'James Doe just like your product',
-    desc: 'VCurabitur egestas consequat lorem.'
-  },
-];
+import { useQuery } from "react-query";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import purple from '@material-ui/core/colors/purple';
 
 function TimelineWidget(props) {
+  
+const { isLoading, error, data, isFetching } = useQuery("repoHistories", () =>
+fetch(
+  "https://api.spacexdata.com/v3/history"
+).then((res) => res.json())
+);
+if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+
+
   const { classes, intl } = props;
   return (
-    <PapperBlock whiteBg noMargin title={'TimeLine'} icon="av_timer" desc="">
+    <PapperBlock whiteBg noMargin title={'Histoire'} icon="av_timer" desc="">
       <div className={classes.activityWrap}>
         <List>
-          {dataTimeline.map((item, index) => (
+          {data.map((item, index) => (
             <ListItem key={index.toString()} className={classes.activityList}>
               <ListItemIcon>
                 <div className={classes.timeDot}>
-                  <time>{item.time}</time>
+                  <time>{item.event_date_utc}</time>
                   <span />
                 </div>
               </ListItemIcon>
-              <ListItemText primary={item.title} className={classes.activityText} secondary={item.desc} />
+              <ListItemText primary={item.title} className={classes.activityText} secondary={item.details} />
             </ListItem>
           ))}
         </List>

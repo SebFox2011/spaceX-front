@@ -3,7 +3,7 @@ const styles = theme => ({
   root: {
     padding: `${theme.spacing(3)}px ${theme.spacing(1)}px`,
     marginBottom: theme.spacing(3),
-    //boxShadow: theme.shade.light,
+    //boxShadow: {theme.shade}.light,
     color: theme.palette.text.primary,
     [theme.breakpoints.up('sm')]: {
       padding: `${theme.spacing(3)}px ${theme.spacing(2)}px`
