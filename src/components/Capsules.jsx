@@ -4,13 +4,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
+import styles from './tableStyle-jss';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 
@@ -50,7 +51,7 @@ function Capsules(props) {
             <TableRow key={n.id}>
               <TableCell padding="default">{n.capsule_serial}</TableCell>
               <TableCell align="right">{n.capsule_id}</TableCell>
-              <TableCell align="right">{n.status}</TableCell>
+              <TableCell align="right">{renderStatusCell(n.status)}</TableCell>
               <TableCell align="right">{n.original_launch}</TableCell>
               <TableCell align="right">{`Nom: ${n.missions.name} - Vol: ${n.missions.flight}`}</TableCell>
               <TableCell align="left">{n.details}</TableCell>
@@ -90,3 +91,13 @@ export const Capsule = ({ id }) => {
     )
   }
   
+  const getStatus = status => {
+    switch (status) {
+      case 'destroyed': return 'secondary';
+      case 'unknown': return 'disabled';
+      case 'retired': return 'action';
+      case 'active': return 'primary';
+      default: return 'defaut'
+    }
+  }
+  const renderStatusCell = (status) => <Chip label={status} color={getStatus(status)} />
