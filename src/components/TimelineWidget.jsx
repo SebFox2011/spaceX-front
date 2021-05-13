@@ -21,7 +21,7 @@ fetch(
 if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
 
 
-  const { classes, intl } = props;
+  const { classes } = props;
   return (
     <PapperBlock whiteBg noMargin title={'Histoire'} icon="av_timer" desc="">
       <div className={classes.activityWrap}>

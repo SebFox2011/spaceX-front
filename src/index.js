@@ -1,14 +1,13 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./index.css"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import ThemeWrapper from "./ThemeWrapper"
 import { Provider } from "react-redux"
 import history from "./utils/history"
 import { ConnectedRouter } from "connected-react-router/immutable"
-
 import configureStore from "./redux/configureStore"
+import "./index.css"
 
 // Create redux store with history
 const initialState = {}
