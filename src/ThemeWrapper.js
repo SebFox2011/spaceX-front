@@ -17,7 +17,6 @@ import {
   changeLayoutAction,
   changeDirectionAction
 } from './redux/actions/uiActions';
-import  TemplateSettings  from './components/TemplateSettings';
 import applicationTheme from './styles/theme/applicationTheme';
 
 const styles = {
@@ -37,20 +36,14 @@ export const AppContext = React.createContext();
 
 function ThemeWrapper(props) {
   const {
-    changeDirection,
-    changeLayout,
     changeMode,
-    changeTheme,
     classes,
     children,
     color,
     direction,
-    layout,
     mode,
-    palette,
   } = props;
   const [pageLoaded, setPageLoaded] = useState(true);
-  const [newPalette, setNewPalette] = useState(undefined);
   const [theme, setTheme] = useState(createMuiTheme(applicationTheme(color, mode, direction)));
 
   const onProgressShow = () => {
@@ -68,31 +61,13 @@ function ThemeWrapper(props) {
     }, 500);
   };
 
-  const handleChangeTheme = event => {
-    setTheme(createMuiTheme(applicationTheme(event.target.value, mode, direction)));
-    changeTheme(event.target.value);
-  };
-
   const handleChangeMode = newMode => {
     setTheme(createMuiTheme(applicationTheme(color, newMode, direction)));
     changeMode(newMode);
   };
 
-  const handleChangeLayout = value => {
-    changeLayout(value);
-  };
-
-  const handleChangeDirection = dirVal => {
-    setTheme(createMuiTheme(applicationTheme(color, mode, dirVal)));
-    changeDirection(dirVal);
-
-    // Set HTML root direction attribute
-    document.dir = dirVal;
-  };
-
   useEffect(() => {
     playProgress();
-    setNewPalette(palette);
 
     return () => {
       onProgressShow();
@@ -110,17 +85,7 @@ function ThemeWrapper(props) {
               showSpinner={false}
             />
           </div>
-          <TemplateSettings
-            palette={newPalette}
-            selectedValue={color}
-            mode={mode}
-            layout={layout}
-            direction={direction}
-            changeTheme={handleChangeTheme}
-            changeMode={handleChangeMode}
-            changeLayout={handleChangeLayout}
-            changeDirection={handleChangeDirection}
-          />
+          
           <AppContext.Provider value={handleChangeMode}>
             {children}
           </AppContext.Provider>
