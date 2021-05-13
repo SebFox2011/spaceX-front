@@ -15,7 +15,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink, Link } from 'react-router-dom';
-import brand from '../../dummy/brand';
 import logo from '../../images/logo.svg';
 import menuMessages from '../../ui/menuMessages';
 import SearchUi from '../Search/SearchUi';
@@ -127,8 +126,8 @@ function Header(props) {
           </span>
           <Hidden smDown>
             <NavLink to="/app" className={classNames(classes.brand, classes.brandBar)}>
-              <img src={logo} alt={brand.name} />
-              {brand.name}
+              <img src={logo} alt={'Enlite Prime'} />
+              {'Enlite Prime'}
             </NavLink>
           </Hidden>
         </div>
