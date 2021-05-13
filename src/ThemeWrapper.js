@@ -79,7 +79,7 @@ function ThemeWrapper(props) {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <div className={classes.pageLoader}>
-            <Loading
+          <Loading
               show={pageLoaded}
               color={theme.palette.primary.main}
               showSpinner={false}

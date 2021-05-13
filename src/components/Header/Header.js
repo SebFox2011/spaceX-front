@@ -115,19 +115,11 @@ function Header(props) {
     >
       <Toolbar disableGutters={!open}>
         <div className={classNames(classes.brandWrap, dense && classes.dense)}>
-          <span>
-            <IconButton
-              className={classes.menuButton}
-              aria-label="Menu"
-              onClick={toggleDrawerOpen}
-            >
-              <MenuIcon />
-            </IconButton>
-          </span>
+         
           <Hidden smDown>
-            <NavLink to="/app" className={classNames(classes.brand, classes.brandBar)}>
-              <img src={logo} alt={'Enlite Prime'} />
-              {'Enlite Prime'}
+            <NavLink to="/" className={classNames(classes.brand, classes.brandBar)}>
+              <img src={logo} alt={'Space X'} />
+              {'Space X'}
             </NavLink>
           </Hidden>
         </div>
@@ -140,7 +132,7 @@ function Header(props) {
               )}
             >
               {fullScreen ? (
-                <Tooltip title={'coucou'} placement="bottom">
+                <Tooltip title={'Close Full Screen'} placement="bottom">
                   <IconButton
                     className={classes.button}
                     onClick={closeFullScreen}
@@ -149,7 +141,7 @@ function Header(props) {
                   </IconButton>
                 </Tooltip>
               ) : (
-                <Tooltip title={'coucou'} placement="bottom">
+                <Tooltip title={'Open Full Screen'} placement="bottom">
                   <IconButton
                     className={classes.button}
                     onClick={openFullScreen}
@@ -158,7 +150,7 @@ function Header(props) {
                   </IconButton>
                 </Tooltip>
               )}
-              <Tooltip title={'coucou'} placement="bottom">
+              <Tooltip title={'Dark Mode'} placement="bottom">
                 <IconButton
                   className={classes.button}
                   onClick={() => turnMode(mode)}
@@ -166,7 +158,7 @@ function Header(props) {
                   <InvertColors />
                 </IconButton>
               </Tooltip>
-              <Tooltip title={'coucou'} placement="bottom">
+              <Tooltip title={'Ouvrir le guide'} placement="bottom">
                 <IconButton className={classes.button} onClick={openGuide}>
                   <HelpOutlineOutlined />
                 </IconButton>
@@ -179,7 +171,7 @@ function Header(props) {
                 showTitle && classes.show,
               )}
             >
-              {menuMessages[title] !== undefined ? 'coucou' : title}
+              {menuMessages[title] !== undefined ? 'Essai' : title}
             </Typography>
           </div>
         </Hidden>

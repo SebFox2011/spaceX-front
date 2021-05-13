@@ -59,7 +59,7 @@ function LeftSidebarBigLayout(props) {
             <div className={classes.pageTitle}>
               <Typography component="h4" variant="h4">
                 {messages[place] !== undefined ? (
-                  'coucou'
+                  'Essai'
                 ) : (
                   place
                 )}

@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import List from '@material-ui/core/List';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Icon from '@material-ui/core/Icon';
-import { openMenuAction, closeMenuAction } from '../../redux/actions/uiActions';
-import messages from '../../ui/menuMessages';
+import React, { useState } from "react"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/core/styles"
+import classNames from "classnames"
+import { NavLink } from "react-router-dom"
+import { connect } from "react-redux"
+import List from "@material-ui/core/List"
+import ListSubheader from "@material-ui/core/ListSubheader"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import ListItemText from "@material-ui/core/ListItemText"
+import ButtonBase from "@material-ui/core/ButtonBase"
+import Icon from "@material-ui/core/Icon"
+import { openMenuAction, closeMenuAction } from "../../redux/actions/uiActions"
+import messages from "../../ui/menuMessages"
 
-import styles from './sidebarBig-jss';
+import styles from "./sidebarBig-jss"
+
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
   return <NavLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
@@ -26,6 +27,7 @@ function MainMenuBig(props) { // eslint-disable-line
     open,
     dataMenu,
     drawerPaper,
+    userAttr,
     closeDrawer,
     openDrawer,
     mobile,
@@ -86,7 +88,7 @@ function MainMenuBig(props) { // eslint-disable-line
           <span className={classes.text}>
             {
               messages[item.key] !== undefined
-                ? 'coucou'
+                ? item.name
                 : item.name
             }
           </span>
@@ -106,7 +108,7 @@ function MainMenuBig(props) { // eslint-disable-line
         <span className={classes.text}>
           {
             messages[item.key] !== undefined
-              ? 'coucou'
+              ? item.name
               : item.name
           }
         </span>
@@ -124,7 +126,7 @@ function MainMenuBig(props) { // eslint-disable-line
         >
           {
             messages[item.key] !== undefined
-              ? 'Home'
+              ? item.name
               : item.name
           }
         </ListSubheader>
@@ -148,7 +150,7 @@ function MainMenuBig(props) { // eslint-disable-line
           className={classes.text}
           primary={
             messages[item.key] !== undefined
-              ? 'Home'
+              ? item.name
               : item.name
           }
         />
@@ -197,6 +199,7 @@ function MainMenuBig(props) { // eslint-disable-line
 
 MainMenuBig.propTypes = {
   classes: PropTypes.object.isRequired,
+  userAttr: PropTypes.object.isRequired,
   open: PropTypes.object.isRequired,
   dataMenu: PropTypes.array.isRequired,
   openDrawer: PropTypes.func.isRequired,
