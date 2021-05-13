@@ -1,71 +1,54 @@
 module.exports = [
   {
     key: 'home',
-    name: 'Home',
+    name: 'Infos',
     icon: 'home',
     link:'/',
+  },
+  {
+    key: 'missions',
+    name: 'Les missions',
+    icon: 'widgets',
+    link:'/MissionsTable',
+    
+  },
+  {
+    key: 'pages',
+    name: 'Histoire',
+    icon: 'important_devices',
     child: [
       {
         key: 'corporate',
-        name: 'Corporate',
-        link: '/Capsules',
+        name: 'History',
+        link: '/History',
         icon: 'business',
         badge: 'Hot'
       }
     ]
   },
   {
-    key: 'missions',
-    name: 'Les missions',
-    icon: 'widgets',
-    link:'/Capsules',
-    child: [
-      {
-        key: 'static_apps',
-        name: 'Static Apps',
-        title: true,
-      }
-    ]
-  },
-  {
-    key: 'pages',
-    name: 'Pages',
-    icon: 'important_devices',
-    child: [
-      {
-        key: 'static_auth',
-        name: 'Static Auth',
-        title: true,
-      }
-    ]
-  },
-  {
     key: 'tables',
-    name: 'Tables Charts',
+    name: 'Ships',
     icon: 'table_chart',
     child: [
       {
-        key: 'common_table',
-        name: 'Common Table',
-        title: true,
+        key: 'buttons',
+        name: 'Ships',
+        icon: 'add_circle',
+        link: '/Ships'
       }
     ]
   },
   {
     key: 'forms',
-    name: 'Form Button',
+    name: 'Dragons',
     icon: 'border_color',
     child: [
       {
-        key: 'buttons_collection',
-        name: 'Button Collection',
-        title: true,
-      },
-      {
         key: 'buttons',
-        name: 'Buttons',
+        name: 'Dragons',
         icon: 'add_circle',
-        link: '/app/forms/buttons'
+        link: '/Dragons'
       }
     ]
   },

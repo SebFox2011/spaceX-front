@@ -1,14 +1,10 @@
 import React, { Fragment } from "react"
 import { PropTypes } from "prop-types"
 import classNames from "classnames"
-import Fade from "@material-ui/core/Fade"
-import Typography from "@material-ui/core/Typography"
 import { withStyles } from "@material-ui/core/styles"
-import BreadCrumb from "../../components/BreadCrumb/BreadCrumb"
 import Header from "../../components/Header/Header"
 import SidebarBig from "../../components/SidebarBig/MainMenuBig"
 import dataMenu from "../../ui/menu"
-import messages from "../../ui/menuMessages"
 import styles from "../appStyles-jss"
 
 function LeftSidebarBigLayout(props) {
@@ -18,12 +14,10 @@ function LeftSidebarBigLayout(props) {
     toggleDrawer,
     sidebarOpen,
     loadTransition,
-    pageLoaded,
     mode,
     history,
     changeMode,
     place,
-    titleException,
     handleOpenGuide,
   } = props
 
@@ -55,35 +49,7 @@ function LeftSidebarBigLayout(props) {
         <section
           className={classNames(classes.mainWrap, classes.sidebarLayout)}
         >
-          {titleException.indexOf(history.location.pathname) < 0 && (
-            <div className={classes.pageTitle}>
-              <Typography component="h4" variant="h4">
-                {messages[place] !== undefined ? (
-                  'Essai'
-                ) : (
-                  place
-                )}
-              </Typography>
-              <BreadCrumb
-                separator=" / "
-                theme="light"
-                location={history.location}
-              />
-            </div>
-          )}
-          {!pageLoaded && (
-            <img
-              src="/images/spinner.gif"
-              alt="spinner"
-              className={classes.circularProgress}
-            />
-          )}
-          <Fade in={pageLoaded} {...(pageLoaded ? { timeout: 700 } : {})}>
-            <div className={!pageLoaded ? classes.hideApp : ""}>
-              {/* Application content will load here */}
-              {children}
-            </div>
-          </Fade>
+          {children}
         </section>
       </main>
     </Fragment>
