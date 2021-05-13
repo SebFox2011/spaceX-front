@@ -12,8 +12,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import ViewList from '@material-ui/icons/ViewList';
 import GridOn from '@material-ui/icons/GridOn';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import messages from './messages';
 import Cart from '../Product/Cart';
 import styles from './search-jss';
 

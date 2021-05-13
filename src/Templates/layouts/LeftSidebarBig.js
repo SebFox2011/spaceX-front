@@ -25,9 +25,6 @@ function LeftSidebarBigLayout(props) {
     place,
     titleException,
     handleOpenGuide,
-    signOut,
-    userAttr,
-    isLogin,
   } = props
 
   return (
@@ -40,15 +37,12 @@ function LeftSidebarBigLayout(props) {
         title={place}
         history={history}
         openGuide={handleOpenGuide}
-        signOut={signOut}
         dense
-        isLogin={isLogin}
       />
       <SidebarBig
         dataMenu={dataMenu}
         loadTransition={loadTransition}
         open={sidebarOpen}
-        userAttr={userAttr}
         toggleDrawerOpen={toggleDrawer}
       />
       <main
@@ -109,9 +103,6 @@ LeftSidebarBigLayout.propTypes = {
   place: PropTypes.string.isRequired,
   titleException: PropTypes.array.isRequired,
   handleOpenGuide: PropTypes.func.isRequired,
-  signOut: PropTypes.func.isRequired,
-  isLogin: PropTypes.bool,
-  userAttr: PropTypes.object.isRequired,
 }
 
 LeftSidebarBigLayout.defaultProps = {

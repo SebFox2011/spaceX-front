@@ -17,7 +17,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={Infos} />
         <Route path="/Capsules" component={Capsules} />
-        <Route path="/TimelineWidget" component={TimelineWidget} />
+        <Route path="/History" component={TimelineWidget} />
         <Route path="/MissionsTable" component={MissionsTable} />
         <Route path="/Ships" component={Ships} />
         <Route path="/Capsules" component={Capsules} />

@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import  GuideSlider  from '../components/GuideSlider';
 import { toggleAction, openAction, playTransitionAction } from '../redux/actions/uiActions';
-import dummy from '../dummy/dummyContents';
 import LeftSidebarBigLayout from './layouts/LeftSidebarBig';
 import styles from './appStyles-jss';
 
@@ -24,25 +23,12 @@ function Dashboard(props) {
     layout,
     changeMode,
     signOut,
-    user,
   } = props;
   const [appHeight, setAppHeight] = useState(0);
   const [openGuide, setOpenGuide] = useState(false);
-  const titleException = ['/app', '/app/crm-dashboard', '/app/crypto-dashboard'];
+  const titleException = ['/app'];
   const parts = history.location.pathname.split('/');
   const place = parts[parts.length - 1].replace('-', ' ');
-  const profile = userProfile => {
-    if (userProfile) {
-      return {
-        avatar: userProfile.photoURL || dummy.user.avatar,
-        name: userProfile.displayName
-      };
-    }
-    return {
-      avatar: dummy.user.avatar,
-      name: dummy.user.name
-    };
-  };
 
   const handleOpenGuide = () => {
     setOpenGuide(true);
@@ -100,9 +86,6 @@ function Dashboard(props) {
             place={place}
             titleException={titleException}
             handleOpenGuide={handleOpenGuide}
-            signOut={signOut}
-            isLogin={true}
-            userAttr={null}
           >
             { children }
           </LeftSidebarBigLayout>

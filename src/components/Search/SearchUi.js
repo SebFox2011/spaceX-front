@@ -9,7 +9,6 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import suggestionsApi from '../../ui/menu';
-import messages from '../Header/messages';
 import styles from './search-jss';
 
 const menu = [];

@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import dummy from '../../dummy/dummyContents';
 import styles from './sidebar-jss';
 import SidebarContent from './SidebarContent';
 
@@ -18,7 +17,6 @@ function Sidebar(props) {
     dataMenu,
     userAttr
   } = props;
-  const [status, setStatus] = useState(dummy.user.status);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleOpen = event => {
@@ -27,11 +25,6 @@ function Sidebar(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleChangeStatus = newStatus => {
-    setStatus(newStatus);
-    handleClose();
   };
 
   return (
@@ -50,7 +43,6 @@ function Sidebar(props) {
               toggleDrawerOpen={toggleDrawerOpen}
               loadTransition={loadTransition}
               dataMenu={dataMenu}
-              status={status}
               anchorEl={anchorEl}
               openMenuStatus={handleOpen}
               closeMenuStatus={handleClose}
@@ -73,7 +65,6 @@ function Sidebar(props) {
             leftSidebar={leftSidebar}
             loadTransition={loadTransition}
             dataMenu={dataMenu}
-            status={status}
             anchorEl={anchorEl}
             openMenuStatus={handleOpen}
             closeMenuStatus={handleClose}
@@ -88,7 +79,6 @@ function Sidebar(props) {
 
 Sidebar.propTypes = {
   classes: PropTypes.object.isRequired,
-  userAttr: PropTypes.object.isRequired,
   toggleDrawerOpen: PropTypes.func.isRequired,
   loadTransition: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,

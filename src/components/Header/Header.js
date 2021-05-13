@@ -19,7 +19,6 @@ import brand from '../../dummy/brand';
 import logo from '../../images/logo.svg';
 import menuMessages from '../../ui/menuMessages';
 import SearchUi from '../Search/SearchUi';
-import messages from './messages';
 import styles from './header-jss';
 
 const elem = document.documentElement;

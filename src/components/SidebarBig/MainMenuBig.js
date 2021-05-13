@@ -26,7 +26,6 @@ function MainMenuBig(props) { // eslint-disable-line
     open,
     dataMenu,
     drawerPaper,
-    userAttr,
     closeDrawer,
     openDrawer,
     mobile,
@@ -198,7 +197,6 @@ function MainMenuBig(props) { // eslint-disable-line
 
 MainMenuBig.propTypes = {
   classes: PropTypes.object.isRequired,
-  userAttr: PropTypes.object.isRequired,
   open: PropTypes.object.isRequired,
   dataMenu: PropTypes.array.isRequired,
   openDrawer: PropTypes.func.isRequired,
