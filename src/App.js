@@ -12,6 +12,8 @@ import Capsules, { Capsule } from "./components/Capsules"
 import MissionsTable from "./components/MissionsTable"
 import Ships from "./components/Ships"
 import Dashboard from "./Templates/Dashboard"
+import Launches from './components/Launches'
+import LaunchPads from './components/LaunchPads'
 const queryClient = new QueryClient()
 
 export default function App({ history }) {
@@ -28,10 +30,10 @@ export default function App({ history }) {
           <Route path="/Capsules" component={Capsules} />
           <Route path="/Roadster" component={Roadster} />
           <Route path="/Dragons" component={Dragons} />
+          <Route path="/Launches" component={Launches} />
+          <Route path="/LaunchPads" component={LaunchPads} />
         </Switch>
-        <Capsule id={"C101"} />
-
-        <ReactQueryDevtools initialIsOpen />
+        {/* <ReactQueryDevtools initialIsOpen /> */}
       </QueryClientProvider>
     </Dashboard>
   )
