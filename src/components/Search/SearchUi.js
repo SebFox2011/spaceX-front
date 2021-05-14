@@ -135,7 +135,7 @@ function SearchUi(props) {
       className={classes.autocomplete}
       inputProps={{
         classes,
-        placeholder: 'coucou',
+        placeholder: 'Recherche',
         value: inputValue,
         onChange: handleChange,
       }}

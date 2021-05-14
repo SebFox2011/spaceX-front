@@ -1,55 +1,57 @@
 module.exports = [
   {
-    key: 'home',
-    name: 'Infos',
+    key: 'Home',
+    name: 'Home',
     icon: 'home',
     link:'/',
   },
   {
-    key: 'missions',
-    name: 'Les missions',
+    key: 'MissionsTable',
+    name: 'MissionsTable',
     icon: 'widgets',
     link:'/MissionsTable',
     
   },
   {
-    key: 'pages',
-    name: 'Histoire',
+    key: 'History',
+    name: 'History',
     icon: 'important_devices',
-    child: [
-      {
-        key: 'corporate',
-        name: 'History',
-        link: '/History',
-        icon: 'business',
-        badge: 'Hot'
-      }
-    ]
+    link: '/History',
+    // child: [
+    //   {
+    //     key: 'corporate',
+    //     name: 'History',
+    //     link: '/History',
+    //     icon: 'business'
+    //   }
+    // ]
   },
   {
-    key: 'tables',
+    key: 'Ships',
     name: 'Ships',
     icon: 'table_chart',
-    child: [
-      {
-        key: 'buttons',
-        name: 'Ships',
-        icon: 'add_circle',
-        link: '/Ships'
-      }
-    ]
+    link: '/Ships',
+    // child: [
+    //   {
+    //     key: 'buttons',
+    //     name: 'Ships',
+    //     icon: 'add_circle',
+    //     link: '/Ships'
+    //   }
+    // ]
   },
   {
-    key: 'forms',
+    key: 'Dragons',
     name: 'Dragons',
     icon: 'border_color',
-    child: [
-      {
-        key: 'buttons',
-        name: 'Dragons',
-        icon: 'add_circle',
-        link: '/Dragons'
-      }
-    ]
+    link: '/Dragons',
+    // child: [
+    //   {
+    //     key: 'buttons',
+    //     name: 'Dragons',
+    //     icon: 'add_circle',
+    //     link: '/Dragons'
+    //   }
+    // ]
   },
 ];

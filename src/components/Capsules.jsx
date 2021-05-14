@@ -74,7 +74,6 @@ Capsules.propTypes = {
 export default withStyles(styles)(Capsules);
 
 export const Capsule = ({ id }) => {
-    console.log(id)
     const { isLoading, error, data, isFetching } = useQuery("capsule-${id}", () =>
       fetch(`https://api.spacexdata.com/v3/capsules/${id}/`).then((res) =>
         res.json()

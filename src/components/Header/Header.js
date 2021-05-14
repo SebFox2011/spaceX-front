@@ -13,8 +13,7 @@ import InvertColors from '@material-ui/icons/InvertColorsOutlined';
 import HelpOutlineOutlined from '@material-ui/icons/HelpOutlineOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import menuMessages from '../../ui/menuMessages';
 import SearchUi from '../Search/SearchUi';
@@ -26,15 +25,12 @@ function Header(props) {
   const {
     changeMode,
     classes,
-    toggleDrawerOpen,
     margin,
     mode,
     title,
     openGuide,
     history,
-    signOut,
-    dense,
-    isLogin
+    dense
   } = props;
   const [open] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
@@ -102,7 +98,7 @@ function Header(props) {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <AppBar
@@ -195,15 +191,12 @@ function Header(props) {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  toggleDrawerOpen: PropTypes.func.isRequired,
   margin: PropTypes.bool.isRequired,
-  isLogin: PropTypes.bool,
   dense: PropTypes.bool,
   mode: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   changeMode: PropTypes.func.isRequired,
   openGuide: PropTypes.func.isRequired,
-  signOut: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
 
