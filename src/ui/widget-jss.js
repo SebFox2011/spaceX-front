@@ -468,13 +468,21 @@ const styles = theme => ({
     marginTop: theme.spacing(1),
   },
   sliderWrap: {
-    height: 360,
+    height: 'auto',
     overflow: 'hidden',
     '& $title': {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap'
     }
+  },
+  media: {
+    height: -140,
+    //position: 'relative',
+    paddingTop: '56.25%', // 16:9
+    [theme.breakpoints.only('sm')]: {
+      paddingTop: '26.25%',
+    },
   },
   sliderContent: {
     borderBottomLeftRadius: 0,

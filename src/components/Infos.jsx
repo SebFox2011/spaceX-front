@@ -13,6 +13,8 @@ import Edit from '@material-ui/icons/Edit';
 import CounterWidget from './Counter/CounterWidget';
 import ProfileWidget from './ProfileWidget'
 import styles from '../ui/widget-jss'
+import Roadster from "./Roadster";
+import Divider from "@material-ui/core/Divider"
 
 const Infos = ({ classes,history }) => {
   const changeMode = useContext(AppContext);
@@ -75,6 +77,8 @@ const Infos = ({ classes,history }) => {
             </CounterWidget>
           </Grid>
         </Grid>
+        <Divider className={classes.divider} />
+        <Roadster/>
       </div>
       </div>
     );

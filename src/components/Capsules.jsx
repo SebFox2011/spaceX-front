@@ -21,14 +21,14 @@ function Capsules(props) {
   const { isLoading, error, data, isFetching } = useQuery("repoCapsules", () =>
     fetch("https://api.spacexdata.com/v4/capsules").then((res) => res.json())
   )
-  if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+  if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 
   return (
     <div className={classes.rootTable}>
       <Toolbar className={classes.toolbar}>
         <div className={classes.title}>
-          <Typography variant="h6">Liste des capsules</Typography>
+          <Typography variant="h6">{`Liste des Capsules : ${data.length}`}</Typography>
         </div>
       </Toolbar>
       <Table className={classNames(classes.table, classes.bordered)}>

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import "./App.css"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
-import Roadster from "./components/Roadster"
+import RoadsterV3 from "./components/RoadsterV3"
 import Dragons from "./components/Dragons"
 import Infos from "./components/Infos"
 import { AppContext } from "./ThemeWrapper"
@@ -31,7 +31,7 @@ export default function App({ history }) {
           <Route path="/MissionsTable" component={MissionsTable} />
           <Route path="/Ships" component={Ships} />
           <Route path="/Capsules" component={Capsules} />
-          <Route path="/Roadster" component={Roadster} />
+          <Route path="/RoadsterV3" component={RoadsterV3} />
           <Route path="/Dragons" component={Dragons} />
           <Route path="/Launches" component={Launches} />
           <Route path="/LaunchPads" component={LaunchPads} />
