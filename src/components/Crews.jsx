@@ -13,6 +13,7 @@ import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import WebIcon from '@material-ui/icons/Web';
 import { Icon } from '@material-ui/core';
 
 const renderCell = element => {
@@ -39,10 +40,10 @@ function Payloads(props) {
         <TableHead>
           <TableRow>
             <TableCell padding="default">name</TableCell>
-            <TableCell align="right">agency</TableCell>
-            <TableCell align="right">image</TableCell>
-            <TableCell align="right">wikipedia</TableCell>
-            <TableCell align="right">status</TableCell>
+            <TableCell align="center">agency</TableCell>
+            <TableCell align="center">image</TableCell>
+            <TableCell align="center">wikipedia</TableCell>
+            <TableCell align="center">status</TableCell>
             <TableCell align="left">launches</TableCell>
           </TableRow>
         </TableHead>
@@ -50,11 +51,11 @@ function Payloads(props) {
           {data.map(n => ([
             <TableRow key={n.id}>
               <TableCell padding="default">{n.name}</TableCell>
-              <TableCell align="right">{n.agency}</TableCell>
-              <TableCell align="right">{n.image}</TableCell>
-              <TableCell align="right">{n.wikipedia}</TableCell>
-              <TableCell align="right">{n.status}</TableCell>
-              <TableCell align="right">{JSON.stringify(n.launches)}</TableCell>
+              <TableCell align="center">{n.agency}</TableCell>
+              <TableCell align="center"><img src={n.image} className={classes.img} alt={n.name} style={{width:'100px', height:'auto'}} onClick={()=> console.log(n.name)}/></TableCell>
+              <TableCell align="center">{<a href={n.wikipedia}><WebIcon/></a>}</TableCell>
+              <TableCell align="center">{n.status}</TableCell>
+              <TableCell align="center">{JSON.stringify(n.launches)}</TableCell>
             </TableRow>
           ]))}
         </TableBody>

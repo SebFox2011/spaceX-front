@@ -13,6 +13,7 @@ import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import { Icon } from '@material-ui/core';
 
 function Launches(props) {
   const { classes } = props;
@@ -38,17 +39,16 @@ function Launches(props) {
             <TableCell align="right">Id</TableCell>
             <TableCell align="right">Année</TableCell>
             <TableCell align="right">Date</TableCell>
-            <TableCell align="left">Tentative?</TableCell>
             <TableCell align="right">rocket</TableCell>
             <TableCell align="right">ships</TableCell>
             <TableCell align="right">telemetry</TableCell>
-            <TableCell align="right">launch_site</TableCell>
-            <TableCell align="right">launch_success</TableCell>
-            <TableCell align="right">links</TableCell>
+            <TableCell align="right">site décollage</TableCell>
+            <TableCell align="right">Décollage réussi ?</TableCell>
+            <TableCell align="right">Liens</TableCell>
             <TableCell align="right">details</TableCell>
             <TableCell align="right">upcoming</TableCell>
             <TableCell align="right">timeline</TableCell>
-            <TableCell align="right">crew</TableCell>
+            <TableCell align="right">Equipage</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -59,15 +59,14 @@ function Launches(props) {
               <TableCell align="right">{n.mission_id}</TableCell>
               <TableCell align="right">{n.launch_year}</TableCell>
               <TableCell align="right">{n.launch_date_utc}</TableCell>
-              <TableCell align="left">{n.is_tentative}</TableCell>
               <TableCell align="right">{JSON.stringify(n.rocket)}</TableCell>
               <TableCell align="right">{n.ships}</TableCell>
               <TableCell align="right">{JSON.stringify(n.telemetry)}</TableCell>
-              <TableCell align="right">{n.launch_success}</TableCell>
+              <TableCell align="right">{n.launch_success?<Icon>check</Icon>:<Icon>cancel</Icon>}</TableCell>
               <TableCell align="right">{JSON.stringify(n.links)}</TableCell>
               <TableCell align="right">{n.details}</TableCell>
               <TableCell align="right">{JSON.stringify(n.timeline)}</TableCell>
-              <TableCell align="right">{JSON.stringify(n.timeline)}</TableCell>
+              <TableCell align="right">{JSON.stringify(n.crew)}</TableCell>
             </TableRow>
           ]))}
         </TableBody>

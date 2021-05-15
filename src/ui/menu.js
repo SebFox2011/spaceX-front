@@ -8,7 +8,7 @@ module.exports = [
   {
     key: 'Crews',
     name: 'Crews',
-    icon: 'important_devices',
+    icon: 'contacts',
     link:'/Crews',
     
   },
