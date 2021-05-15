@@ -11,6 +11,7 @@ import { openMenuAction, closeMenuAction } from "../../redux/actions/uiActions"
 import styles from "./sidebarBig-jss"
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) {
+  //window.navigator.vibrate(500) // mobile vibration
   return <NavLink to={props.to} {...props} innerRef={ref} /> // eslint-disable-line
 })
 
@@ -18,7 +19,6 @@ function MainMenuBig({ classes, open, dataMenu }) {
   const [selectedMenu, setSelectedMenu] = useState(dataMenu[0])
 
   const activeMenu = (key, child) => {
-    console.log(selectedMenu, key, child)
     if (selectedMenu.length < 1) {
       if (open.indexOf(key) > -1) {
         console.log("open.indexOf(key) > -1")

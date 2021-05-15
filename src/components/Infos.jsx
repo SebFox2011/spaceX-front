@@ -8,7 +8,7 @@ const Infos = ({ history }) => {
   const changeMode = useContext(AppContext);
     const { isLoading, error, data, isFetching } = useQuery("repoInfos", () =>
       fetch(
-        "https://api.spacexdata.com/v3/info"
+        "https://api.spacexdata.com/v4/company"
       ).then((res) => res.json())
     );
     if (isLoading) return "Loading...";

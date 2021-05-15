@@ -27,7 +27,7 @@ function Ships(props) {
     <div className={classes.rootTable}>
       <Toolbar className={classes.toolbar}>
         <div className={classes.title}>
-          <Typography variant="h6">Liste des Navettes</Typography>
+          <Typography variant="h6">{`Liste des Navettes : ${data.length}`}</Typography>
         </div>
       </Toolbar>
       <Table className={classNames(classes.table, classes.bordered)}>
@@ -43,16 +43,15 @@ function Ships(props) {
             <TableCell align="right">mmsi</TableCell>
             <TableCell align="right">abs</TableCell>
             <TableCell align="right">Classe</TableCell>
-            <TableCell align="right">weight_lbs</TableCell>
-            <TableCell align="right">weight_kg</TableCell>
+            <TableCell align="right">Poids (kg)</TableCell>
             <TableCell align="right">Année de construction</TableCell>
             <TableCell align="right">Lieu</TableCell>
             <TableCell align="right">status</TableCell>
             <TableCell align="right">speed_kn</TableCell>
             <TableCell align="right">course_deg</TableCell>
             <TableCell align="right">position</TableCell>
-            <TableCell align="right">successful_landings</TableCell>
-            <TableCell align="right">attempted_landings</TableCell>
+            <TableCell align="right">attérissages réussis</TableCell>
+            <TableCell align="right">tentatives atterrissage</TableCell>
             <TableCell align="right">missions</TableCell>
             <TableCell align="right">url</TableCell>
             <TableCell align="right">image</TableCell>
@@ -71,7 +70,6 @@ function Ships(props) {
               <TableCell align="right">{n.mmsi}</TableCell>
               <TableCell align="right">{n.abs}</TableCell>
               <TableCell align="right">{n.class}</TableCell>
-              <TableCell align="right">{n.abweight_lbs}</TableCell>
               <TableCell align="right">{n.weight_kg}</TableCell>
               <TableCell align="right">{n.year_built}</TableCell>
               <TableCell align="right">{n.home_port}</TableCell>

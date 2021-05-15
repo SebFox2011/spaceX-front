@@ -10,7 +10,7 @@ const listWidth = 188;
 const styles = theme => ({
   bigSidebar: {
     color: theme.palette.text.primary,
-    padding: `${theme.spacing(1)}px 0`,
+    padding: `${theme.spacing(4)}px 0`,
     display: 'flex',
     marginTop: theme.spacing(1),
     [theme.breakpoints.up('lg')]: {

@@ -27,7 +27,7 @@ function Launches(props) {
     <div className={classes.rootTable}>
       <Toolbar className={classes.toolbar}>
         <div className={classes.title}>
-          <Typography variant="h6">Liste des lancements</Typography>
+          <Typography variant="h6">{`Liste des Lancements : ${data.length}`}</Typography>
         </div>
       </Toolbar>
       <Table className={classNames(classes.table, classes.bordered)}>

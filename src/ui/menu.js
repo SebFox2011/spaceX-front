@@ -6,29 +6,36 @@ module.exports = [
     link:'/',
   },
   {
+    key: 'Crews',
+    name: 'Crews',
+    icon: 'important_devices',
+    link:'/Crews',
+    
+  },
+  {
     key: 'MissionsTable',
     name: 'MissionsTable',
-    icon: 'widgets',
+    icon: 'important_devices',
     link:'/MissionsTable',
     
   },
   {
     key: 'History',
     name: 'History',
-    icon: 'important_devices',
+    icon: 'history',
     link: '/History',
 
   },
   {
     key: 'Ships',
     name: 'Ships',
-    icon: 'table_chart',
+    icon: 'airplanemode_active',
     link: '/Ships',
   },
   {
     key: 'Dragons',
     name: 'Dragons',
-    icon: 'border_color',
+    icon: 'airplay',
     link: '/Dragons',
   },
   {
@@ -48,5 +55,11 @@ module.exports = [
     name: 'LaunchPads',
     icon: 'crop',
     link: '/LaunchPads',
+  },
+  {
+    key: 'Payloads',
+    name: 'Payloads',
+    icon: 'explore',
+    link: '/Payloads',
   },
 ];

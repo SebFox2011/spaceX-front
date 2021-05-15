@@ -13,12 +13,17 @@ import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import { Icon } from '@material-ui/core';
 
-function MissionsTable(props) {
+const renderCell = element => {
+  return 
+}
+
+function Payloads(props) {
   const { classes } = props;
 
-  const { isLoading, error, data, isFetching } = useQuery("repoMissionsTable", () =>
-    fetch("https://api.spacexdata.com/v3/missions").then((res) => res.json())
+  const { isLoading, error, data, isFetching } = useQuery("repoPayloads", () =>
+    fetch("https://api.spacexdata.com/v4/crew").then((res) => res.json())
   )
   if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
@@ -27,32 +32,29 @@ function MissionsTable(props) {
     <div className={classes.rootTable}>
       <Toolbar className={classes.toolbar}>
         <div className={classes.title}>
-          <Typography variant="h6">{`Liste des Missions : ${data.length}`}</Typography>
+          <Typography variant="h6">{`Liste des Equipages : ${data.length}`}</Typography>
         </div>
       </Toolbar>
       <Table className={classNames(classes.table, classes.bordered)}>
         <TableHead>
           <TableRow>
-            <TableCell padding="default">Nom de la mission</TableCell>
-            <TableCell align="right">Mission ID</TableCell>
-            <TableCell align="right">Fabriquants</TableCell>
-            <TableCell align="right">Wikipedia</TableCell>
-            <TableCell align="right">Site internet</TableCell>
-            <TableCell align="left">Twitter</TableCell>
-            <TableCell align="right">description</TableCell>
-
+            <TableCell padding="default">name</TableCell>
+            <TableCell align="right">agency</TableCell>
+            <TableCell align="right">image</TableCell>
+            <TableCell align="right">wikipedia</TableCell>
+            <TableCell align="right">status</TableCell>
+            <TableCell align="left">launches</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map(n => ([
             <TableRow key={n.id}>
-              <TableCell padding="default">{n.mission_name}</TableCell>
-              <TableCell align="right">{n.mission_id}</TableCell>
-              <TableCell align="right">{n.manufacturers}</TableCell>
+              <TableCell padding="default">{n.name}</TableCell>
+              <TableCell align="right">{n.agency}</TableCell>
+              <TableCell align="right">{n.image}</TableCell>
               <TableCell align="right">{n.wikipedia}</TableCell>
-              <TableCell align="right">{n.website}</TableCell>
-              <TableCell align="left">{n.twitter}</TableCell>
-              <TableCell align="right">{n.description}</TableCell>
+              <TableCell align="right">{n.status}</TableCell>
+              <TableCell align="right">{JSON.stringify(n.launches)}</TableCell>
             </TableRow>
           ]))}
         </TableBody>
@@ -61,8 +63,8 @@ function MissionsTable(props) {
   );
 }
 
-MissionsTable.propTypes = {
+Payloads.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MissionsTable);
+export default withStyles(styles)(Payloads);

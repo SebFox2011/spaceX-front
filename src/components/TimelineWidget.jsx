@@ -15,15 +15,16 @@ function TimelineWidget(props) {
   
 const { isLoading, error, data, isFetching } = useQuery("repoHistories", () =>
 fetch(
-  "https://api.spacexdata.com/v3/history"
+  "https://api.spacexdata.com/v4/history"
 ).then((res) => res.json())
 );
-if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+if (error) return 'Erreur'
 
 
   const { classes } = props;
   return (
-    <PapperBlock whiteBg noMargin title={'Histoire'} icon="av_timer" desc="">
+    <PapperBlock whiteBg noMargin title={`Histoire: ${data.length} événements`} icon="av_timer" desc="">
       <div className={classes.activityWrap}>
         <List>
           {data.map((item, index) => (
