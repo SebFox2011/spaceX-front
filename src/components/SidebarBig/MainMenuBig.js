@@ -21,17 +21,11 @@ function MainMenuBig({ classes, open, dataMenu }) {
   const activeMenu = (key, child) => {
     if (selectedMenu.length < 1) {
       if (open.indexOf(key) > -1) {
-        console.log("open.indexOf(key) > -1")
         return true
       }
       return false
     }
-    if (child === selectedMenu) {
-      console.log("child === selectedMenu")
-      return true
-    }
     if (key === selectedMenu.key) {
-      console.log("key === selectedMenu", key, selectedMenu.key)
       return true
     }
     return false

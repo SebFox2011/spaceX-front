@@ -22,7 +22,6 @@ function Dashboard(props) {
     history,
     layout,
     changeMode,
-    signOut,
   } = props;
   const [appHeight, setAppHeight] = useState(0);
   const [openGuide, setOpenGuide] = useState(false);

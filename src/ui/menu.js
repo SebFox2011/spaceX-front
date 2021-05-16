@@ -62,4 +62,10 @@ module.exports = [
     icon: 'explore',
     link: '/Payloads',
   },
+  {
+    key: 'Starlinks',
+    name: 'Starlinks',
+    icon: 'star',
+    link: '/Starlinks',
+  },
 ];
