@@ -48,6 +48,8 @@ const styles = theme => ({
   toolbar: {
     backgroundColor: theme.palette.type === 'dark' ? darken(theme.palette.primary.light, 0.6) : theme.palette.primary.light,
     minHeight: 48,
+    width:300,
+    marginBottom: theme.spacing(2),
   },
   title: {
     flex: '0 0 auto',

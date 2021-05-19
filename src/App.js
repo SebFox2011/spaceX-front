@@ -9,7 +9,7 @@ import { AppContext } from "./ThemeWrapper"
 import { Switch, Route } from "react-router-dom"
 import TimelineWidget from "./components/TimelineWidget"
 import Capsules, { Capsule } from "./components/Capsules"
-import MissionsTable from "./components/MissionsTable"
+import Missions from "./components/Missions"
 import Ships from "./components/Ships"
 import Dashboard from "./Templates/Dashboard"
 import Launches from "./components/Launches"
@@ -31,7 +31,7 @@ export default function App({ history }) {
           <Route path="/Capsules" component={Capsules} />
           <Route path="/Dragons" component={Dragons} />
           <Route path="/History" component={TimelineWidget} />
-          <Route path="/MissionsTable" component={MissionsTable} />
+          <Route path="/Missions" component={Missions} />
           <Route path="/Launches" component={Launches} />
           <Route path="/LaunchPads" component={LaunchPads} />
           <Route path="/Payloads" component={Payloads} />

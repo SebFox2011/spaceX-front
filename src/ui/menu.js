@@ -13,10 +13,10 @@ module.exports = [
     
   },
   {
-    key: 'MissionsTable',
-    name: 'MissionsTable',
+    key: 'Missions',
+    name: 'Missions',
     icon: 'important_devices',
-    link:'/MissionsTable',
+    link:'/Missions',
     
   },
   {
@@ -29,7 +29,7 @@ module.exports = [
   {
     key: 'Ships',
     name: 'Ships',
-    icon: 'airplanemode_active',
+    icon: 'directions_boat',
     link: '/Ships',
   },
   {

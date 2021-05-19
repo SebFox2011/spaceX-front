@@ -14,7 +14,7 @@ import HelpOutlineOutlined from '@material-ui/icons/HelpOutlineOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import { NavLink } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import logo from '../../images/SpaceX-Logo.svg.png';
 import menuMessages from '../../ui/menuMessages';
 import SearchUi from '../Search/SearchUi';
 import styles from './header-jss';

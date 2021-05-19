@@ -15,10 +15,10 @@ import { useQuery } from "react-query"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import purple from "@material-ui/core/colors/purple"
 import { Icon } from "@material-ui/core"
-import themePalette from "../palette/themePaletteMode"
 
 const Starlinks = ({ classes }) => {
   const [isOpenDialog, setOpenDialog] = useState(false)
+  const [item, setItem] = useState(0)
   const { isLoading, error, data, isFetching } = useQuery(
     "repoStartlinks",
     () =>
@@ -32,11 +32,59 @@ const Starlinks = ({ classes }) => {
     setOpenDialog(false)
   }
 
+  const handleModal = (datas) => {
+    setOpenDialog(true)
+    setItem(datas)
+  }
+
+  const count = () => {
+    const result = []
+    const versionId = new Set(data.map(e=>e.version))
+    versionId.forEach(id => {
+      const nbr = data.filter(e => e.version === id)
+      result.push({[id]:nbr.length})
+    })
+    return result
+  }
+  const versionNumber = count()
   return (
     <div className={classes.rootTable}>
+       <Modal
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        open={isOpenDialog}
+        onClose={handleClose}
+      >
+        <div
+          style={
+            {top:'50%', left: "50%",
+            transform: "translate(-50%, -50%)",
+            position : "absolute",
+            width : '1000px',
+            height:'500px',
+            background : 'white',
+            padding : '15px'}
+          }
+          className={classes.paper}
+        >
+          <Typography variant="h6" id="modal-title">
+            {`${item.OBJECT_NAME} - ${item.COMMENT} création: ${item.CREATION_DATE} `}
+          </Typography>
+          <Typography variant="subtitle1" id="simple-modal-description">
+            {item.COMMENT}
+          </Typography>
+          <div style={{display:'flex',flexWrap:'wrap', width:'100%',height:'100%'}}>
+           {item.CREATION_DATE}
+          </div>
+          
+        </div>
+      </Modal>
       <Toolbar className={classes.toolbar}>
         <div className={classes.title}>
-          <Typography variant="h6">{`Liste des Starlinks : ${data.length}`}</Typography>
+          <Typography variant="h6">
+            {`Liste des Starlinks : ${data.length}`} 
+            {/* {`${Object.entries(versionNumber).forEach(([key,value]) => {return <span> ${key} ${value} </span> })})}`} */}
+          </Typography>
         </div>
       </Toolbar>
       <Table className={classNames(classes.table, classes.bordered)}>
@@ -59,7 +107,7 @@ const Starlinks = ({ classes }) => {
               <TableCell align="right">{n.version}</TableCell>
               <TableCell align="right">{n.launch}</TableCell>
               <TableCell align="center">
-                <Icon onClick={() => setOpenDialog(true)}>open_in_new</Icon>
+                <Icon onClick={() => handleModal(n.spaceTrack)}>open_in_new</Icon>
               </TableCell>
               <TableCell align="right">{n.longitude}</TableCell>
               <TableCell align="right">{n.latitude}</TableCell>
@@ -69,32 +117,7 @@ const Starlinks = ({ classes }) => {
           ])}
         </TableBody>
       </Table>
-      <Modal
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        open={isOpenDialog}
-        onClose={handleClose}
-      >
-        <div
-          style={
-            {top:'50%', left: "50%",
-            transform: "translate(-50%, -50%)",
-            position : "absolute",
-            width : '300px',
-            background : 'white',
-            boxShadow : themePalette,
-            padding : '15px'}
-          }
-          className={classes.paper}
-        >
-          <Typography variant="h6" id="modal-title">
-            Text in a modal
-          </Typography>
-          <Typography variant="subtitle1" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </div>
-      </Modal>
+     
     </div>
   )
 }
