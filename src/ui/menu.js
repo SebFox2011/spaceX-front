@@ -6,6 +6,13 @@ module.exports = [
     link:'/',
   },
   {
+    key: 'History',
+    name: 'History',
+    icon: 'history',
+    link: '/History',
+
+  },
+  {
     key: 'Crews',
     name: 'Crews',
     icon: 'contacts',
@@ -20,11 +27,11 @@ module.exports = [
     
   },
   {
-    key: 'History',
-    name: 'History',
-    icon: 'history',
-    link: '/History',
-
+    key: 'Rockets',
+    name: 'Rockets',
+    icon: 'eject',
+    link:'/Rockets',
+    
   },
   {
     key: 'Ships',

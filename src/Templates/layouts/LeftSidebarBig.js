@@ -32,6 +32,7 @@ function LeftSidebarBigLayout({
         openGuide={handleOpenGuide}
         dense
       />
+      
       <SidebarBig
         dataMenu={dataMenu}
         loadTransition={loadTransition}

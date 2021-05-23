@@ -243,7 +243,7 @@ const styles = theme => ({
       textDecoration: 'line-through'
     }
   },
-  title: {},
+  title: {paddingTop:20},
   subtitle: {},
   styledPaper: {
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.secondary.dark : theme.palette.secondary.main,

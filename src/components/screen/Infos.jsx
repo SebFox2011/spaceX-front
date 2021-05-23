@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import { useQuery } from "react-query";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
-import { AppContext } from '../ThemeWrapper';
+import { AppContext } from '../../ThemeWrapper';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -10,9 +10,9 @@ import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import PeopleIcon from '@material-ui/icons/People';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import Edit from '@material-ui/icons/Edit';
-import CounterWidget from './Counter/CounterWidget';
-import ProfileWidget from './ProfileWidget'
-import styles from '../ui/widget-jss'
+import CounterWidget from '../Counter/CounterWidget';
+import ProfileWidget from '../ProfileWidget'
+import styles from '../../ui/widget-jss'
 import Roadster from "./Roadster";
 
 const Infos = ({ classes,history }) => {

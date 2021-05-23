@@ -53,7 +53,7 @@ function Payloads({ classes }) {
               <TableCell align="right">{n.reused?<Icon>check</Icon>:null}</TableCell>
               <TableCell align="right">{n.customers.map(customer=><p>{customer}</p>)}</TableCell>
               <TableCell align="right">{n.nationalities.map(nationality=><p>{nationality}</p>)}</TableCell>
-              <TableCell align="right">{n.manufacturers.map(manufact=><p>{manufact}</p>)}</TableCell>
+              <TableCell align="right">{n.manufacturers.map(manufacturer=><p>{manufacturer}</p>)}</TableCell>
               <TableCell align="right">{n.type}</TableCell>
               <TableCell align="right">{n.mass_kg}</TableCell>
               <TableCell align="right">{n.orbit}</TableCell>

@@ -10,7 +10,7 @@ import styles from './TimelineWidget.styles';
 import { useQuery } from "react-query";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
-import {formatDate} from '../utils/fomatDate'
+import {formatDate} from '../../utils/fomatDate'
 
 function TimelineWidget({ classes }) {
   

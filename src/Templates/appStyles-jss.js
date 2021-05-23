@@ -112,11 +112,15 @@ const styles = theme => ({
     },
     '&$sidebarLayout': {
       paddingTop: theme.spacing(8),
+      [theme.breakpoints.down('sm')]: {
+        marginTop: 0,
+        paddingTop:0
+      }
     },
     '&$topbarLayout': {
       width: '100%',
       marginTop: theme.spacing(3),
-    },
+    }
   },
   preloader: {
     position: 'absolute',

@@ -10,8 +10,8 @@ import SwipeableViews from "react-swipeable-views"
 import CardMedia from '@material-ui/core/CardMedia';
 import Paper from "@material-ui/core/Paper"
 import Button from "@material-ui/core/Button"
-import {formatDate} from '../utils/fomatDate'
-import styles from "../ui/widget-jss"
+import {formatDate} from '../../utils/fomatDate'
+import styles from "../../ui/widget-jss"
 
 
 

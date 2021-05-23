@@ -3,7 +3,7 @@ import {
     createMuiTheme, MuiThemeProvider
   } from '@material-ui/core/styles';
 import Roadster from './Roadster';
-import applicationTheme from '../styles/theme/applicationTheme';
+import applicationTheme from '../../styles/theme/applicationTheme';
 import { QueryClient, QueryClientProvider } from "react-query"
 
 const queryClient = new QueryClient()

@@ -66,12 +66,12 @@ function Dashboard(props) {
       className={
         classNames(
           classes.appFrameInner,
-          layout === 'top-navigation' || layout === 'mega-menu' ? classes.topNav : classes.sideNav,
-          mode === 'dark' ? 'dark-mode' : 'light-mode'
+           layout === 'top-navigation' || layout === 'mega-menu' ? classes.topNav : classes.sideNav,
+           mode === 'dark' ? 'dark-mode' : 'light-mode'
         )
       }
     >
-      <GuideSlider openGuide={openGuide} closeGuide={handleCloseGuide} />
+      {/* <GuideSlider openGuide={openGuide} closeGuide={handleCloseGuide} /> */}
       { /* Left Big-Sidebar Layout */
         layout === 'big-sidebar' && (
           <LeftSidebarBigLayout

@@ -41,8 +41,8 @@ const Dragons = ({classes}) => {
             <TableCell align="left">angle sidewall</TableCell>
             <TableCell align="right">Masse</TableCell>
             <TableCell align="right">Premier vol</TableCell>
-            <TableCell align="right">Bouclier thermique</TableCell>
-            <TableCell align="right">thrusters</TableCell>
+            <TableCell align="right" width="15%">Bouclier thermique</TableCell>
+            <TableCell align="right" width="15%">thrusters</TableCell>
             <TableCell align="right">Masse charge au lancement (kg)</TableCell>
             <TableCell align="right">Volume charge au lancement (m3)</TableCell>
             <TableCell align="right">Masse charge au retour (kg)</TableCell>
@@ -53,7 +53,7 @@ const Dragons = ({classes}) => {
             <TableCell align="right">Diamètre</TableCell>
             <TableCell align="right">Images Flickr</TableCell>
             <TableCell align="right">Wikipedia</TableCell>
-            <TableCell align="right">Description</TableCell>
+            <TableCell align="right" width="25%">Description</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -66,8 +66,8 @@ const Dragons = ({classes}) => {
               <TableCell align="left">{n.sidewall_angle_deg}</TableCell>
               <TableCell align="right">{n.dry_mass_kg}</TableCell>
               <TableCell align="right">{n.first_flight}</TableCell>
-              <TableCell align="right">{JSON.stringify(n.heat_shield)}</TableCell>
-              <TableCell align="right">{JSON.stringify(n.thrusters)}</TableCell>
+              <TableCell align="right" width="15%">{JSON.stringify(n.heat_shield)}</TableCell>
+              <TableCell align="right" width="15%">{JSON.stringify(n.thrusters)}</TableCell>
               <TableCell align="right">{n.launch_payload_mass.kg}</TableCell>
               <TableCell align="right">{n.launch_payload_vol.cubic_meters}</TableCell>
               <TableCell align="right">{n.return_payload_mass.kg}</TableCell>
@@ -76,9 +76,9 @@ const Dragons = ({classes}) => {
               <TableCell align="right">{JSON.stringify(n.trunk)}</TableCell>
               <TableCell align="right">{n.height_w_trunk.meters}</TableCell>
               <TableCell align="right">{n.diameter.meters}</TableCell>
-              <TableCell align="right">{JSON.stringify(n.flickr_images)}</TableCell>
+              <TableCell align="right">{n.flickr_images.map(image=> <p>{image}</p>)}</TableCell>
               <TableCell align="right">{n.wikipedia}</TableCell>
-              <TableCell align="right">{n.description}</TableCell>
+              <TableCell align="right" width="25%">{n.description}</TableCell>
             </TableRow>
           ]))}
         </TableBody>

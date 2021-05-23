@@ -101,7 +101,9 @@ function Header(props) {
   }, [handleScroll]);
 
   return (
+    <Hidden smDown>
     <AppBar
+    style={{paddingLeft:100}}
       className={classNames(
         classes.appBar,
         classes.floatingBar,
@@ -185,7 +187,9 @@ function Header(props) {
         <div className={classes.userToolbar}>
         </div>
       </Toolbar>
+     
     </AppBar>
+    </Hidden>
   );
 }
 

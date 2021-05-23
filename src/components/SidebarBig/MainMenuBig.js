@@ -54,7 +54,7 @@ function MainMenuBig({ classes, open, dataMenu }) {
     })
 
   return (
-    <aside className={classes.bigSidebar}>
+    <aside className={classes.bigSidebar} style={{marginTop:0, paddingTop:0}}>
       <nav className={classes.category}>
         <div className={classes.fixedWrap}>{setMenus(dataMenu)}</div>
       </nav>

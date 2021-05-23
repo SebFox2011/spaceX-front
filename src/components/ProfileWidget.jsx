@@ -10,7 +10,7 @@ import DateRange from "@material-ui/icons/DateRange"
 import LocationOn from "@material-ui/icons/LocationOn"
 import Divider from "@material-ui/core/Divider"
 import Avatar from "@material-ui/core/Avatar"
-import PapperBlock from "./PaperBlock"
+import PapperBlock from "../components/screen/PaperBlock"
 import styles from "../ui/widget-jss"
 
 function ProfileWidget({ classes, profile }) {
