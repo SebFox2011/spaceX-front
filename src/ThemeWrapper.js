@@ -34,15 +34,15 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 // Export context for themeing mode
 export const AppContext = React.createContext();
 
-function ThemeWrapper(props) {
-  const {
-    changeMode,
-    classes,
-    children,
-    color,
-    direction,
-    mode,
-  } = props;
+function ThemeWrapper({
+  changeMode,
+  classes,
+  children,
+  color,
+  direction,
+  mode,
+}) {
+
   const [pageLoaded, setPageLoaded] = useState(true);
   const [theme, setTheme] = useState(createMuiTheme(applicationTheme(color, mode, direction)));
 

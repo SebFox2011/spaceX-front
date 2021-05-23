@@ -13,14 +13,14 @@ import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import WebIcon from '@material-ui/icons/Web';
 
-function LaunchPads(props) {
-  const { classes } = props;
+function LaunchPads({ classes }) {
 
   const { isLoading, error, data, isFetching } = useQuery("repoLaunchPads", () =>
-    fetch("https://api.spacexdata.com/v3/launchpads").then((res) => res.json())
+    fetch("https://api.spacexdata.com/v4/launchpads").then((res) => res.json())
   )
-  if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+  if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 
   return (
@@ -37,13 +37,13 @@ function LaunchPads(props) {
             <TableCell align="right">name</TableCell>
             <TableCell align="right">status</TableCell>
             <TableCell align="right">location</TableCell>
-            <TableCell align="right">vehicles_launched</TableCell>
-            <TableCell align="left">attempted_launches</TableCell>
-            <TableCell align="right">successful_launches</TableCell>
+            <TableCell align="right">vehicles launcés</TableCell>
+            <TableCell align="left">tentatives</TableCell>
+            <TableCell align="right">réussis</TableCell>
             <TableCell align="right">wikipedia</TableCell>
             <TableCell align="right">details</TableCell>
-            <TableCell align="right">site_id</TableCell>
-            <TableCell align="right">site_name_long</TableCell>
+            <TableCell align="right">id site</TableCell>
+            <TableCell align="right">Nom du site</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -56,7 +56,7 @@ function LaunchPads(props) {
               <TableCell align="right">{n.vehicles_launched}</TableCell>
               <TableCell align="left">{n.attempted_launches}</TableCell>
               <TableCell align="right">{n.successful_launches}</TableCell>
-              <TableCell align="right">{n.wikipedia}</TableCell>
+              <TableCell align="center">{<a href={n.wikipedia}><WebIcon/></a>}</TableCell>
               <TableCell align="right">{n.details}</TableCell>
               <TableCell align="right">{n.site_id}</TableCell>
               <TableCell align="right">{n.site_name_long}</TableCell>

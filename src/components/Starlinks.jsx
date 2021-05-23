@@ -96,8 +96,8 @@ const Starlinks = ({ classes }) => {
             <TableCell align="right">spaceTrack</TableCell>
             <TableCell align="right">longitude</TableCell>
             <TableCell align="right">latitude</TableCell>
-            <TableCell align="left">height_km</TableCell>
-            <TableCell align="right">velocity_kms</TableCell>
+            <TableCell align="left">height (km)</TableCell>
+            <TableCell align="right">velocity (km)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

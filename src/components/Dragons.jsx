@@ -18,7 +18,7 @@ import { Icon } from '@material-ui/core';
 const Dragons = ({classes}) => {
     const { isLoading, error, data, isFetching } = useQuery("repoDragons", () =>
       fetch(
-        "https://api.spacexdata.com/v3/dragons"
+        "https://api.spacexdata.com/v4/dragons"
       ).then((res) => res.json())
     );
     if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
@@ -34,7 +34,6 @@ const Dragons = ({classes}) => {
       <Table className={classNames(classes.table, classes.bordered)}>
         <TableHead>
           <TableRow>
-            <TableCell padding="default">id</TableCell>
             <TableCell align="right">name</TableCell>
             <TableCell align="right">type</TableCell>
             <TableCell align="right">active</TableCell>
@@ -60,7 +59,6 @@ const Dragons = ({classes}) => {
         <TableBody>
           {data.map(n => ([
             <TableRow key={n.id}>
-              <TableCell padding="default">{n.id}</TableCell>
               <TableCell align="right">{n.name}</TableCell>
               <TableCell align="right">{n.type}</TableCell>
               <TableCell align="right">{n.active?<Icon>check</Icon>:null}</TableCell>

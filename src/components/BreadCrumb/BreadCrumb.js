@@ -5,13 +5,13 @@ import classNames from 'classnames';
 import { Link, Route } from 'react-router-dom';
 import styles from './breadCrumb-jss';
 
-const Breadcrumbs = (props) => {
-  const {
-    classes,
-    theme,
-    separator,
-    location
-  } = props;
+const Breadcrumbs = ({
+  classes,
+  theme,
+  separator,
+  location
+}) => {
+
   return (
     <section className={classNames(theme === 'dark' ? classes.dark : classes.light, classes.breadcrumbs)}>
       <Route

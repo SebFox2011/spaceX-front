@@ -15,11 +15,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import { Icon } from '@material-ui/core';
 
-function Payloads(props) {
-  const { classes } = props;
+function Payloads({ classes }) {
 
   const { isLoading, error, data, isFetching } = useQuery("repoPayloads", () =>
-    fetch("https://api.spacexdata.com/v3/payloads").then((res) => res.json())
+    fetch("https://api.spacexdata.com/v4/payloads").then((res) => res.json())
   )
   if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
@@ -49,14 +48,14 @@ function Payloads(props) {
         <TableBody>
           {data.map(n => ([
             <TableRow key={n.id}>
-              <TableCell padding="default">{n.payload_id}</TableCell>
-              <TableCell align="right"><div style={{display:'flex',flexDirection:'column'}}>{n.norad_id?.map(e => <span>{e}</span>)}</div> </TableCell>
+              <TableCell padding="default">{n.id}</TableCell>
+              <TableCell align="right"><div style={{display:'flex',flexDirection:'column'}}>{n.norad_ids?.map(e => <span>{e}</span>)}</div> </TableCell>
               <TableCell align="right">{n.reused?<Icon>check</Icon>:null}</TableCell>
-              <TableCell align="right">{n.customers}</TableCell>
-              <TableCell align="right">{n.nationality}</TableCell>
-              <TableCell align="right">{n.manufacturer}</TableCell>
-              <TableCell align="right">{n.payload_type}</TableCell>
-              <TableCell align="right">{n.payload_mass_kg}</TableCell>
+              <TableCell align="right">{n.customers.map(customer=><p>{customer}</p>)}</TableCell>
+              <TableCell align="right">{n.nationalities.map(nationality=><p>{nationality}</p>)}</TableCell>
+              <TableCell align="right">{n.manufacturers.map(manufact=><p>{manufact}</p>)}</TableCell>
+              <TableCell align="right">{n.type}</TableCell>
+              <TableCell align="right">{n.mass_kg}</TableCell>
               <TableCell align="right">{n.orbit}</TableCell>
               <TableCell align="right">{JSON.stringify(n.orbit_params)}</TableCell>
             </TableRow>

@@ -7,19 +7,18 @@ import SidebarBig from "../../components/SidebarBig/MainMenuBig"
 import dataMenu from "../../ui/menu"
 import styles from "../appStyles-jss"
 
-function LeftSidebarBigLayout(props) {
-  const {
-    classes,
-    children,
-    toggleDrawer,
-    sidebarOpen,
-    loadTransition,
-    mode,
-    history,
-    changeMode,
-    place,
-    handleOpenGuide,
-  } = props
+function LeftSidebarBigLayout({
+  classes,
+  children,
+  toggleDrawer,
+  sidebarOpen,
+  loadTransition,
+  mode,
+  history,
+  changeMode,
+  place,
+  handleOpenGuide,
+}) {
 
   return (
     <Fragment>

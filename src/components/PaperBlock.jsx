@@ -14,22 +14,20 @@ function PapperBlock({
   desc,
   children,
   whiteBg,
-  noMargin,
-  colorMode,
   overflowX,
   icon
 }) {
 
-  const color = mode => {
-    switch (mode) {
-      case 'light':
-        return classes.colorLight;
-      case 'dark':
-        return classes.colorDark;
-      default:
-        return classes.none;
-    }
-  };
+  // const color = mode => {
+  //   switch (mode) {
+  //     case 'light':
+  //       return classes.colorLight;
+  //     case 'dark':
+  //       return classes.colorDark;
+  //     default:
+  //       return classes.none;
+  //   }
+  // };
   return (
     <div>
       <Paper className={classes.root} style={{backgroundColor:'rgba(101,115,195,0.08)'}}
@@ -63,8 +61,6 @@ PapperBlock.propTypes = {
   icon: PropTypes.string,
   children: PropTypes.node.isRequired,
   whiteBg: PropTypes.bool,
-  colorMode: PropTypes.string,
-  noMargin: PropTypes.bool,
   overflowX: PropTypes.bool,
 };
 

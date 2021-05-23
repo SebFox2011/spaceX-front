@@ -58,7 +58,7 @@ function Dashboard(props) {
     return () => {
       unlisten();
     };
-  }, []);
+  }, [history,initialOpen,loadTransition]);
 
   return (
     <div

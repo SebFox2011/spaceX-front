@@ -13,14 +13,14 @@ import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import WebIcon from '@material-ui/icons/Web';
 
-function MissionsTable(props) {
-  const { classes } = props;
+function MissionsTable({ classes }) {
 
   const { isLoading, error, data, isFetching } = useQuery("repoMissionsTable", () =>
     fetch("https://api.spacexdata.com/v3/missions").then((res) => res.json())
   )
-  if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+  if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 
   return (
@@ -49,9 +49,9 @@ function MissionsTable(props) {
               <TableCell padding="default">{n.mission_name}</TableCell>
               <TableCell align="right">{n.mission_id}</TableCell>
               <TableCell align="right">{n.manufacturers}</TableCell>
-              <TableCell align="right">{n.wikipedia}</TableCell>
-              <TableCell align="right">{n.website}</TableCell>
-              <TableCell align="left">{n.twitter}</TableCell>
+              <TableCell align="center">{n.wikipedia?<a href={n.wikipedia}><WebIcon/></a>:null}</TableCell>
+              <TableCell align="center">{n.website?<a href={n.website}><WebIcon/></a>:null}</TableCell>
+              <TableCell align="center">{n.twitter?<a href={n.twitter}><WebIcon/></a>:null}</TableCell>
               <TableCell align="right">{n.description}</TableCell>
             </TableRow>
           ]))}

@@ -1,14 +1,14 @@
 import React, { useContext } from "react"
 import "./App.css"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { ReactQueryDevtools } from "react-query/devtools"
+//import { ReactQueryDevtools } from "react-query/devtools"
 import RoadsterV3 from "./components/RoadsterV3"
 import Dragons from "./components/Dragons"
 import Infos from "./components/Infos"
 import { AppContext } from "./ThemeWrapper"
 import { Switch, Route } from "react-router-dom"
 import TimelineWidget from "./components/TimelineWidget"
-import Capsules, { Capsule } from "./components/Capsules"
+import Capsules from "./components/Capsules"
 import Missions from "./components/Missions"
 import Ships from "./components/Ships"
 import Dashboard from "./Templates/Dashboard"
@@ -21,6 +21,9 @@ const queryClient = new QueryClient()
 
 export default function App({ history }) {
   const changeMode = useContext(AppContext)
+
+  document.title = 'SpaceX front'
+
   return (
     <Dashboard history={history} changeMode={changeMode}>
       <QueryClientProvider client={queryClient}>

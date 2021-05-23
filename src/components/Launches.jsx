@@ -14,14 +14,14 @@ import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import { Icon } from '@material-ui/core';
+import {formatDate} from '../utils/fomatDate'
 
-function Launches(props) {
-  const { classes } = props;
+function Launches({ classes }) {
 
   const { isLoading, error, data, isFetching } = useQuery("repoLaunches", () =>
-    fetch("https://api.spacexdata.com/v3/Launches").then((res) => res.json())
+    fetch("https://api.spacexdata.com/v4/Launches").then((res) => res.json())
   )
-  if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+  if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 
   return (
@@ -36,8 +36,6 @@ function Launches(props) {
           <TableRow>
             <TableCell padding="default">Numero</TableCell>
             <TableCell align="right">Nom de la mission</TableCell>
-            <TableCell align="right">Id</TableCell>
-            <TableCell align="right">Année</TableCell>
             <TableCell align="right">Date</TableCell>
             <TableCell align="right">rocket</TableCell>
             <TableCell align="right">ships</TableCell>
@@ -55,18 +53,18 @@ function Launches(props) {
           {data.map(n => ([
             <TableRow key={n.id}>
               <TableCell padding="default">{n.flight_number}</TableCell>
-              <TableCell align="right">{n.mission_name}</TableCell>
-              <TableCell align="right">{n.mission_id}</TableCell>
-              <TableCell align="right">{n.launch_year}</TableCell>
-              <TableCell align="right">{n.launch_date_utc}</TableCell>
+              <TableCell align="right">{n.name}</TableCell>
+              <TableCell align="right">{formatDate(n.date_utc)}</TableCell>
               <TableCell align="right">{JSON.stringify(n.rocket)}</TableCell>
-              <TableCell align="right">{n.ships}</TableCell>
+              <TableCell align="right">{n.ships.map(ship=><p>{ship}</p>)}</TableCell>
               <TableCell align="right">{JSON.stringify(n.telemetry)}</TableCell>
-              <TableCell align="right">{n.launch_success?<Icon>check</Icon>:<Icon>cancel</Icon>}</TableCell>
+              <TableCell align="right">{JSON.stringify(n.launch_site)}</TableCell>
+              <TableCell align="right">{n.success?<Icon>check</Icon>:<Icon>cancel</Icon>}</TableCell>
               <TableCell align="right">{JSON.stringify(n.links)}</TableCell>
               <TableCell align="right">{n.details}</TableCell>
+              <TableCell align="right">{n.upcoming?<Icon>check</Icon>:null}</TableCell>
               <TableCell align="right">{JSON.stringify(n.timeline)}</TableCell>
-              <TableCell align="right">{JSON.stringify(n.crew)}</TableCell>
+              <TableCell align="right">{n.crew.map(e=><p>{e}</p>)}</TableCell>
             </TableRow>
           ]))}
         </TableBody>

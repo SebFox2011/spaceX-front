@@ -10,8 +10,9 @@ import styles from './TimelineWidget.styles';
 import { useQuery } from "react-query";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import {formatDate} from '../utils/fomatDate'
 
-function TimelineWidget(props) {
+function TimelineWidget({ classes }) {
   
 const { isLoading, error, data, isFetching } = useQuery("repoHistories", () =>
 fetch(
@@ -21,8 +22,6 @@ fetch(
 if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
 if (error) return 'Erreur'
 
-
-  const { classes } = props;
   return (
     <PapperBlock whiteBg noMargin title={`Histoire: ${data.length} événements`} icon="av_timer" desc="">
       <div className={classes.activityWrap}>
@@ -31,7 +30,7 @@ if (error) return 'Erreur'
             <ListItem key={index.toString()} className={classes.activityList}>
               <ListItemIcon>
                 <div className={classes.timeDot}>
-                  <time>{item.event_date_utc}</time>
+                  <time>{formatDate(item.event_date_utc)}</time>
                   <span />
                 </div>
               </ListItemIcon>

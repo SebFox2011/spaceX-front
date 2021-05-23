@@ -478,7 +478,7 @@ const styles = theme => ({
   },
   media: {
     height: -140,
-    //position: 'relative',
+    position: 'relative',
     paddingTop: '56.25%', // 16:9
     [theme.breakpoints.only('sm')]: {
       paddingTop: '26.25%',

@@ -15,8 +15,7 @@ import styles from './tableStyle-jss';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 
-function Capsules(props) {
-  const { classes } = props;
+function Capsules({ classes }) {
 
   const { isLoading, error, data, isFetching } = useQuery("repoCapsules", () =>
     fetch("https://api.spacexdata.com/v4/capsules").then((res) => res.json())

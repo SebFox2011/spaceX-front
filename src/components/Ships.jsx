@@ -13,14 +13,14 @@ import styles from './tableStyle-jss';
 import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
+import WebIcon from '@material-ui/icons/Web';
 
-function Ships(props) {
-  const { classes } = props;
+function Ships({ classes }) {
 
   const { isLoading, error, data, isFetching } = useQuery("repoShips", () =>
-    fetch("https://api.spacexdata.com/v3/ships").then((res) => res.json())
+    fetch("https://api.spacexdata.com/v4/ships").then((res) => res.json())
   )
-  if (isLoading) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
+  if (isLoading ||isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 
   return (
@@ -38,17 +38,13 @@ function Ships(props) {
             <TableCell align="right">Modèle</TableCell>
             <TableCell align="right">Type</TableCell>
             <TableCell align="right">Roles</TableCell>
-            <TableCell align="left">Activité</TableCell>
             <TableCell align="right">imo</TableCell>
             <TableCell align="right">mmsi</TableCell>
             <TableCell align="right">abs</TableCell>
             <TableCell align="right">Classe</TableCell>
             <TableCell align="right">Poids (kg)</TableCell>
-            <TableCell align="right">Année de construction</TableCell>
+            <TableCell align="right">Année</TableCell>
             <TableCell align="right">Lieu</TableCell>
-            <TableCell align="right">status</TableCell>
-            <TableCell align="right">speed_kn</TableCell>
-            <TableCell align="right">course_deg</TableCell>
             <TableCell align="right">position</TableCell>
             <TableCell align="right">attérissages réussis</TableCell>
             <TableCell align="right">tentatives atterrissage</TableCell>
@@ -65,7 +61,6 @@ function Ships(props) {
               <TableCell align="right">{n.ship_model}</TableCell>
               <TableCell align="right">{n.ship_type}</TableCell>
               <TableCell align="right">{n.roles}</TableCell>
-              <TableCell align="left">{n.active}</TableCell>
               <TableCell align="right">{n.imo}</TableCell>
               <TableCell align="right">{n.mmsi}</TableCell>
               <TableCell align="right">{n.abs}</TableCell>
@@ -73,15 +68,12 @@ function Ships(props) {
               <TableCell align="right">{n.weight_kg}</TableCell>
               <TableCell align="right">{n.year_built}</TableCell>
               <TableCell align="right">{n.home_port}</TableCell>
-              <TableCell align="right">{n.status}</TableCell>
-              <TableCell align="right">{n.speed_kn}</TableCell>
-              <TableCell align="right">{n.course_deg}</TableCell>
               <TableCell align="right">{JSON.stringify(n.position)}</TableCell>
               <TableCell align="right">{n.successful_landings}</TableCell>
               <TableCell align="right">{n.attempted_landings}</TableCell>
               <TableCell align="right">{JSON.stringify(n.missions)}</TableCell>
-              <TableCell align="right">{n.url}</TableCell>
-              <TableCell align="right">{n.image}</TableCell>
+              <TableCell align="center">{n.url?<a href={n.url}><WebIcon/></a>:null}</TableCell>
+              <TableCell align="center">{n.image?<a href={n.image}><WebIcon/></a>:null}</TableCell>
             </TableRow>
           ]))}
         </TableBody>

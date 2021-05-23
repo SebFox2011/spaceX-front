@@ -14,7 +14,6 @@ import CounterWidget from './Counter/CounterWidget';
 import ProfileWidget from './ProfileWidget'
 import styles from '../ui/widget-jss'
 import Roadster from "./Roadster";
-import Divider from "@material-ui/core/Divider"
 
 const Infos = ({ classes,history }) => {
   const changeMode = useContext(AppContext);
@@ -28,6 +27,7 @@ const Infos = ({ classes,history }) => {
   
     return (
       <div>
+
         <div>{isFetching ? <CircularProgress  style={{ color: purple[500] }} thickness={7} />: null}</div>
         <div className={classes.rootCounterFull}>
         <ProfileWidget profile={data} />
@@ -77,7 +77,6 @@ const Infos = ({ classes,history }) => {
             </CounterWidget>
           </Grid>
         </Grid>
-        <Divider className={classes.divider} />
         <Roadster/>
       </div>
       </div>
