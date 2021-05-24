@@ -21,7 +21,7 @@ const renderCell = element => {
 
 function Payloads({ classes }) {
 
-  const { isLoading, error, data, isFetching } = useQuery("repoPayloads", () =>
+  const { isLoading, error, data, isFetching } = useQuery("repoCrews", () =>
     fetch("https://api.spacexdata.com/v4/crew").then((res) => res.json())
   )
   if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />

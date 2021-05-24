@@ -17,7 +17,16 @@ import purple from "@material-ui/core/colors/purple"
 import { Icon } from "@material-ui/core"
 import {formatNumber} from "../../utils/formatNumber"
 import {formatDate} from "../../utils/fomatDate"
-
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ * 
+ * Voir plus d'infos sur les paramètres des satellites ici:
+ * https://www.amsat.org/keplerian-elements-tutorial/
+ * https://en.wikipedia.org/wiki/Argument_of_periapsis
+ * https://pwg.gsfc.nasa.gov/stargaze/Fmotion.htm
+ */
 const Starlinks = ({ classes }) => {
   const [isOpenDialog, setOpenDialog] = useState(false)
   const [item, setItem] = useState(0)
@@ -26,8 +35,8 @@ const Starlinks = ({ classes }) => {
     () =>
       fetch("https://api.spacexdata.com/v4/starlink").then((res) => res.json())
   )
-  if (isFetching)
-    return <CircularProgress style={{ color: purple[500] }} thickness={7} />
+  if (isFetching || isLoading)
+    return <CircularProgress style={{ color: purple[500] }} thickness={5} />
   if (error) return "An error has occurred: " + error.message
 
   const handleClose = () => {
@@ -80,16 +89,20 @@ const Starlinks = ({ classes }) => {
           <div style={{display:'flex',flexDirection:'row', justifyContent:'space-around'}}>
           <div style={{display:'flex',flexDirection:'column', flexWrap:'wrap'}}>
            {formatDate(item.CREATION_DATE)}
-           <span>{`MEAN_MOTION: ${item.MEAN_MOTION}`}</span>
+            
+           <h3>{'The basic orbital elements :'}</h3>
+           <span>{`Epoch Rev: ${item.REV_AT_EPOCH}`}</span>
+           <span>{`Orbital Inclination: ${item.INCLINATION}`}</span>
+           <span>{`Right Ascension of Ascending Node (R.A.A.N.): ${item.RA_OF_ASC_NODE}`}</span>
+           <span>{`Argument of Perigee: ${item.ARG_OF_PERICENTER}`}</span>
            <span>{`ECCENTRICITY: ${item.ECCENTRICITY}`}</span>
-           <span>{`INCLINATION: ${item.INCLINATION}`}</span>
-           <span>{`RA_OF_ASC_NODE: ${item.RA_OF_ASC_NODE}`}</span>
-           <span>{`ARG_OF_PERICENTER: ${item.ARG_OF_PERICENTER}`}</span>
-           <span>{`MEAN_ANOMALY: ${item.MEAN_ANOMALY}`}</span>
+           <span>{`Mean Motion: ${item.MEAN_MOTION}`}</span>          
+           <span>{`Mean Anomaly: ${item.MEAN_ANOMALY}`}</span>
+
            <span>{`EPHEMERIS_TYPE: ${item.EPHEMERIS_TYPE}`}</span>
            <span>{`CLASSIFICATION_TYPE: ${item.CLASSIFICATION_TYPE}`}</span>
            <span>{`NORAD_CAT_ID: ${item.ELEMENT_SET_NO}`}</span>
-           <span>{`REV_AT_EPOCH: ${item.REV_AT_EPOCH}`}</span>
+           
            <span>{`BSTAR: ${item.BSTAR}`}</span>
            <span>{`MEAN_MOTION_DOT: ${item.MEAN_MOTION_DOT}`}</span>
            <span>{`MEAN_MOTION_DDOT: ${item.MEAN_MOTION_DDOT}`}</span>
@@ -97,17 +110,12 @@ const Starlinks = ({ classes }) => {
           </div>   
           <div style={{display:'flex',flexDirection:'column', flexWrap:'wrap'}}>
            <span>{`PERIOD: ${item.PERIOD}`}</span>
-           <span>{`APOAPSIS: ${item.APOAPSIS}`}</span>
-           <span>{`PERIAPSIS: ${item.PERIAPSIS}`}</span>
-           <span>{`OBJECT_TYPE: ${item.OBJECT_TYPE}`}</span>
+           <span>{`Apsides: apoapse -> ${item.APOAPSIS} / périapse -> ${item.PERIAPSIS}`}</span>
+           <span>{`Type d'objet: ${item.OBJECT_TYPE}`}</span>
            <span>{`RCS_SIZE: ${item.RCS_SIZE}`}</span>
            <span>{`COUNTRY_CODE: ${item.COUNTRY_CODE}`}</span>
            <span>{`SITE: ${item.SITE}`}</span>
            <span>{`DECAY_DATE: ${item.DECAY_DATE}`}</span>
-           <span>{`PERIOD: ${item.PERIOD}`}</span>
-           <span>{`PERIOD: ${item.PERIOD}`}</span>
-           <span>{`PERIOD: ${item.PERIOD}`}</span>
-           <span>{`PERIOD: ${item.PERIOD}`}</span>
           </div>   
         </div>
         </div>

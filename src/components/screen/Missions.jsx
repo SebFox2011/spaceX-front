@@ -17,7 +17,7 @@ import WebIcon from '@material-ui/icons/Web';
 
 function MissionsTable({ classes }) {
 
-  const { isLoading, error, data, isFetching } = useQuery("repoMissionsTable", () =>
+  const { isLoading, error, data, isFetching } = useQuery("repoMissions", () =>
     fetch("https://api.spacexdata.com/v3/missions").then((res) => res.json())
   )
   if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
