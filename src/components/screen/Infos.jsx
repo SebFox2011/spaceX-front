@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,Suspense} from "react";
 import { useQuery } from "react-query";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
@@ -17,20 +17,26 @@ import Roadster from "./Roadster";
 
 const Infos = ({ classes,history }) => {
   const changeMode = useContext(AppContext);
-    const { isLoading, error, data, isFetching } = useQuery("repoInfos", () =>
+    // const { isLoading, error, data, isFetching } = useQuery("repoInfos", () =>
+    //   fetch(
+    //     "https://api.spacexdata.com/v4/company"
+    //   ).then((res) => res.json())
+    // );
+    // if (isLoading) return "Loading...";
+    // if (error) return "An error has occurred: " + error.message;
+    const {data} = useQuery("repoInfos", () =>
       fetch(
         "https://api.spacexdata.com/v4/company"
-      ).then((res) => res.json())
+      ).then((res) => res.json()),{ suspense: true }
     );
-    if (isLoading) return "Loading...";
-    if (error) return "An error has occurred: " + error.message;
-  
     return (
       <div>
-
-        <div>{isFetching ? <CircularProgress  style={{ color: purple[500] }} thickness={7} />: null}</div>
+        
+        {/* <div>{isFetching ? <CircularProgress  style={{ color: purple[500] }} thickness={7} />: null}</div> */}
         <div className={classes.rootCounterFull}>
+        <Suspense fallback={ <CircularProgress  style={{ color: purple[500] }} thickness={7} />}>
         <ProfileWidget profile={data} />
+        </Suspense>
         <Grid container spacing={2}>
           <Grid item xs={6} md={2}>
             <CounterWidget
@@ -77,8 +83,10 @@ const Infos = ({ classes,history }) => {
             </CounterWidget>
           </Grid>
         </Grid>
+        
         <Roadster/>
       </div>
+      
       </div>
     );
     
