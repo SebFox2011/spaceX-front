@@ -25,9 +25,7 @@ function MainMenuBig({ classes, open, dataMenu }) {
       }
       return false
     }
-    if (key === selectedMenu.key) {
-      return true
-    }
+
     return false
   }
 
@@ -54,7 +52,7 @@ function MainMenuBig({ classes, open, dataMenu }) {
     })
 
   return (
-    <aside className={classes.bigSidebar} style={{marginTop:0, paddingTop:0}}>
+    <aside className={classes.bigSidebar} style={{marginTop:0}}>
       <nav className={classes.category}>
         <div className={classes.fixedWrap}>{setMenus(dataMenu)}</div>
       </nav>

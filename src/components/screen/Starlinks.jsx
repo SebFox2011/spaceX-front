@@ -15,6 +15,8 @@ import { useQuery } from "react-query"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import purple from "@material-ui/core/colors/purple"
 import { Icon } from "@material-ui/core"
+import {formatNumber} from "../../utils/formatNumber"
+import {formatDate} from "../../utils/fomatDate"
 
 const Starlinks = ({ classes }) => {
   const [isOpenDialog, setOpenDialog] = useState(false)
@@ -24,7 +26,7 @@ const Starlinks = ({ classes }) => {
     () =>
       fetch("https://api.spacexdata.com/v4/starlink").then((res) => res.json())
   )
-  if (isLoading || isFetching)
+  if (isFetching)
     return <CircularProgress style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 
@@ -65,18 +67,49 @@ const Starlinks = ({ classes }) => {
             background : 'white',
             padding : '15px'}
           }
-          className={classes.paper}
         >
           <Typography variant="h6" id="modal-title">
-            {`${item.OBJECT_NAME} - ${item.COMMENT} création: ${item.CREATION_DATE} `}
+            {`${item.OBJECT_NAME} - ${item.COMMENT} création: ${formatDate(item.CREATION_DATE)} `}
           </Typography>
           <Typography variant="subtitle1" id="simple-modal-description">
-            {item.COMMENT}
+            {`${item.COMMENT} ${item.TLE_LINE0}`}
           </Typography>
-          <div style={{display:'flex',flexWrap:'wrap', width:'100%',height:'100%'}}>
-           {item.CREATION_DATE}
-          </div>
-          
+          <Typography variant="subtitle1" id="simple-modal-description">
+            {`${item.TLE_LINE1} ${item.TLE_LINE2}`}
+          </Typography>
+          <div style={{display:'flex',flexDirection:'row', justifyContent:'space-around'}}>
+          <div style={{display:'flex',flexDirection:'column', flexWrap:'wrap'}}>
+           {formatDate(item.CREATION_DATE)}
+           <span>{`MEAN_MOTION: ${item.MEAN_MOTION}`}</span>
+           <span>{`ECCENTRICITY: ${item.ECCENTRICITY}`}</span>
+           <span>{`INCLINATION: ${item.INCLINATION}`}</span>
+           <span>{`RA_OF_ASC_NODE: ${item.RA_OF_ASC_NODE}`}</span>
+           <span>{`ARG_OF_PERICENTER: ${item.ARG_OF_PERICENTER}`}</span>
+           <span>{`MEAN_ANOMALY: ${item.MEAN_ANOMALY}`}</span>
+           <span>{`EPHEMERIS_TYPE: ${item.EPHEMERIS_TYPE}`}</span>
+           <span>{`CLASSIFICATION_TYPE: ${item.CLASSIFICATION_TYPE}`}</span>
+           <span>{`NORAD_CAT_ID: ${item.ELEMENT_SET_NO}`}</span>
+           <span>{`REV_AT_EPOCH: ${item.REV_AT_EPOCH}`}</span>
+           <span>{`BSTAR: ${item.BSTAR}`}</span>
+           <span>{`MEAN_MOTION_DOT: ${item.MEAN_MOTION_DOT}`}</span>
+           <span>{`MEAN_MOTION_DDOT: ${item.MEAN_MOTION_DDOT}`}</span>
+           <span>{`SEMIMAJOR_AXIS: ${item.SEMIMAJOR_AXIS}`}</span>
+          </div>   
+          <div style={{display:'flex',flexDirection:'column', flexWrap:'wrap'}}>
+           <span>{`PERIOD: ${item.PERIOD}`}</span>
+           <span>{`APOAPSIS: ${item.APOAPSIS}`}</span>
+           <span>{`PERIAPSIS: ${item.PERIAPSIS}`}</span>
+           <span>{`OBJECT_TYPE: ${item.OBJECT_TYPE}`}</span>
+           <span>{`RCS_SIZE: ${item.RCS_SIZE}`}</span>
+           <span>{`COUNTRY_CODE: ${item.COUNTRY_CODE}`}</span>
+           <span>{`SITE: ${item.SITE}`}</span>
+           <span>{`DECAY_DATE: ${item.DECAY_DATE}`}</span>
+           <span>{`PERIOD: ${item.PERIOD}`}</span>
+           <span>{`PERIOD: ${item.PERIOD}`}</span>
+           <span>{`PERIOD: ${item.PERIOD}`}</span>
+           <span>{`PERIOD: ${item.PERIOD}`}</span>
+          </div>   
+        </div>
         </div>
       </Modal>
       <Toolbar className={classes.toolbar}>
@@ -90,10 +123,10 @@ const Starlinks = ({ classes }) => {
       <Table className={classNames(classes.table, classes.bordered)}>
         <TableHead>
           <TableRow>
-            <TableCell padding="default">id</TableCell>
+            <TableCell padding="default">Nom</TableCell>
             <TableCell align="right">version</TableCell>
-            <TableCell align="right">launch</TableCell>
-            <TableCell align="right">spaceTrack</TableCell>
+            <TableCell align="right">Date de lancement</TableCell>
+            <TableCell align="right">Detail du satellite</TableCell>
             <TableCell align="right">longitude</TableCell>
             <TableCell align="right">latitude</TableCell>
             <TableCell align="left">height (km)</TableCell>
@@ -103,16 +136,16 @@ const Starlinks = ({ classes }) => {
         <TableBody>
           {data.map((n) => [
             <TableRow key={n.id}>
-              <TableCell padding="default">{n.id}</TableCell>
+              <TableCell padding="default">{n.spaceTrack.OBJECT_NAME}</TableCell>
               <TableCell align="right">{n.version}</TableCell>
-              <TableCell align="right">{n.launch}</TableCell>
+              <TableCell align="right">{n.spaceTrack.LAUNCH_DATE}</TableCell>
               <TableCell align="center">
                 <Icon onClick={() => handleModal(n.spaceTrack)}>open_in_new</Icon>
               </TableCell>
-              <TableCell align="right">{n.longitude}</TableCell>
-              <TableCell align="right">{n.latitude}</TableCell>
-              <TableCell align="left">{n.height_km}</TableCell>
-              <TableCell align="right">{n.velocity_kms}</TableCell>
+              <TableCell align="right">{formatNumber(n.longitude,2)}</TableCell>
+              <TableCell align="right">{formatNumber(n.latitude,2)}</TableCell>
+              <TableCell align="left">{formatNumber(n.height_km,2)}</TableCell>
+              <TableCell align="right">{formatNumber(n.velocity_kms,2)}</TableCell>
             </TableRow>,
           ])}
         </TableBody>

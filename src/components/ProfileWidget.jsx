@@ -68,7 +68,7 @@ function ProfileWidget({ classes, profile }) {
                 <LocalPhone />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={"Phone"} secondary="(+62)8765432190" />
+            <ListItemText primary={"Phone"} secondary="+(1) 310-363-6000" />
           </ListItem>
           <ListItem>
             <ListItemAvatar>

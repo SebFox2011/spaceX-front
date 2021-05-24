@@ -1,4 +1,4 @@
-import React, { useContext,Suspense } from "react"
+import React, { useContext } from "react"
 import "./App.css"
 import { QueryClient, QueryClientProvider } from "react-query"
 //import { ReactQueryDevtools } from "react-query/devtools"
@@ -18,13 +18,7 @@ import Payloads from "./components/screen/Payloads"
 import Crews from "./components/screen/Crews"
 import Starlinks from "./components/screen/Starlinks"
 import Rockets from "./components/screen/Rockets"
-import CircularProgress from '@material-ui/core/CircularProgress';
-import purple from '@material-ui/core/colors/purple';
-const queryClient = new QueryClient({defaultOptions: {
-  queries: {
-    suspense: true,
-  },
-},})
+const queryClient = new QueryClient()
 
 export default function App({ history }) {
   const changeMode = useContext(AppContext)
@@ -34,7 +28,6 @@ export default function App({ history }) {
   return (
     <Dashboard history={history} changeMode={changeMode}>
       <QueryClientProvider client={queryClient}>
-      <Suspense fallback={ "I'am waiting ................."}>
         <Switch>
           <Route path="/" exact component={Infos} />
           <Route path="/Capsules" component={Capsules} />
@@ -49,7 +42,7 @@ export default function App({ history }) {
           <Route path="/Rockets" component={Rockets} />
           <Route path="/Ships" component={Ships} />
           <Route path="/Starlinks" component={Starlinks} />
-        </Switch></Suspense>
+        </Switch>
         {/* <ReactQueryDevtools initialIsOpen /> */}
       </QueryClientProvider>
     </Dashboard>
