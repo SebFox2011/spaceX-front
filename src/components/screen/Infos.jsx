@@ -1,5 +1,5 @@
 import React,{useContext} from "react";
-import { useQuery } from "react-query";
+import { useQuery  } from "react-query";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import { AppContext } from '../../ThemeWrapper';
@@ -15,7 +15,7 @@ import ProfileWidget from '../ProfileWidget'
 import styles from '../../ui/widget-jss'
 import Roadster from "./Roadster";
 
-const Infos = ({ classes,history }) => {
+const Infos = ({ classes,history,queryClient }) => {
   const changeMode = useContext(AppContext);
     const { isLoading, error, data, isFetching } = useQuery("repoInfos", () =>
       fetch(
@@ -24,6 +24,7 @@ const Infos = ({ classes,history }) => {
     );
     if (isLoading) return "Loading...";
     if (error) return "An error has occurred: " + error.message;
+
     return (
       <div>
         
