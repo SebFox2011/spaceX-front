@@ -14,12 +14,10 @@ import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import { Icon } from '@material-ui/core';
+import useSpaceX from "../../apiHooks/useSpaceX"
 
 function Payloads({ classes }) {
-
-  const { isLoading, error, data, isFetching } = useQuery("repoPayloads", () =>
-    fetch("https://api.spacexdata.com/v4/payloads").then((res) => res.json())
-  )
+  const { isLoading, error, data, isFetching } = useSpaceX("payloads")
   if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 

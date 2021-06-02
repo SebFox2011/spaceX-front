@@ -15,12 +15,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import { Icon } from '@material-ui/core';
 import {formatDate} from '../../utils/fomatDate'
+import useSpaceX from "../../apiHooks/useSpaceX"
 
 function Launches({ classes }) {
-
-  const { isLoading, error, data, isFetching } = useQuery("repoLaunches", () =>
-    fetch("https://api.spacexdata.com/v4/Launches").then((res) => res.json())
-  )
+  const { isLoading, error, data, isFetching } = useSpaceX("Launches")
   if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
   if (error) return "An error has occurred: " + error.message
 

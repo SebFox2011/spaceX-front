@@ -14,9 +14,9 @@ import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import WebIcon from '@material-ui/icons/Web';
+import useSpaceX from "../../apiHooks/useSpaceX"
 
 function MissionsTable({ classes }) {
-
   const { isLoading, error, data, isFetching } = useQuery("repoMissions", () =>
     fetch("https://api.spacexdata.com/v3/missions").then((res) => res.json())
   )

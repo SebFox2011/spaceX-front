@@ -17,6 +17,8 @@ import purple from "@material-ui/core/colors/purple"
 import { Icon } from "@material-ui/core"
 import {formatNumber} from "../../utils/formatNumber"
 import {formatDate} from "../../utils/fomatDate"
+import useSpaceX from "../../apiHooks/useSpaceX"
+
 /**
  * 
  * @param {*} param0 
@@ -30,11 +32,7 @@ import {formatDate} from "../../utils/fomatDate"
 const Starlinks = ({ classes }) => {
   const [isOpenDialog, setOpenDialog] = useState(false)
   const [item, setItem] = useState(0)
-  const { isLoading, error, data, isFetching } = useQuery(
-    "repoStartlinks",
-    () =>
-      fetch("https://api.spacexdata.com/v4/starlink").then((res) => res.json())
-  )
+  const { isLoading, error, data, isFetching } = useSpaceX("starlink")
   if (isFetching || isLoading)
     return <CircularProgress style={{ color: purple[500] }} thickness={5} />
   if (error) return "An error has occurred: " + error.message

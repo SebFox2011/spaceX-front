@@ -14,13 +14,10 @@ import { useQuery } from "react-query"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import purple from '@material-ui/core/colors/purple';
 import { Icon } from '@material-ui/core';
+import useSpaceX from "../../apiHooks/useSpaceX"
 
 const Dragons = ({classes}) => {
-    const { isLoading, error, data, isFetching } = useQuery("repoDragons", () =>
-      fetch(
-        "https://api.spacexdata.com/v4/dragons"
-      ).then((res) => res.json())
-    );
+  const { isLoading, error, data, isFetching } = useSpaceX("dragons")
     if (isLoading || isFetching) return <CircularProgress  style={{ color: purple[500] }} thickness={7} />
     if (error) return "An error has occurred: " + error.message;
   
